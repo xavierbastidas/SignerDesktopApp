@@ -1,0 +1,17 @@
+C:\Desarrollo\Escritorio\SignaBSG\bin\Debug\net8.0-windows\SignaBSG.exe
+C:\Desarrollo\Escritorio\SignaBSG\bin\Debug\net8.0-windows\SignaBSG.deps.json
+C:\Desarrollo\Escritorio\SignaBSG\bin\Debug\net8.0-windows\SignaBSG.runtimeconfig.json
+C:\Desarrollo\Escritorio\SignaBSG\bin\Debug\net8.0-windows\SignaBSG.dll
+C:\Desarrollo\Escritorio\SignaBSG\bin\Debug\net8.0-windows\SignaBSG.pdb
+C:\Desarrollo\Escritorio\SignaBSG\obj\Debug\net8.0-windows\SignaBSG.Home.resources
+C:\Desarrollo\Escritorio\SignaBSG\obj\Debug\net8.0-windows\SignaBSG.Signer.resources
+C:\Desarrollo\Escritorio\SignaBSG\obj\Debug\net8.0-windows\SignaBSG.csproj.GenerateResource.cache
+C:\Desarrollo\Escritorio\SignaBSG\obj\Debug\net8.0-windows\SignaBSG.GeneratedMSBuildEditorConfig.editorconfig
+C:\Desarrollo\Escritorio\SignaBSG\obj\Debug\net8.0-windows\SignaBSG.AssemblyInfoInputs.cache
+C:\Desarrollo\Escritorio\SignaBSG\obj\Debug\net8.0-windows\SignaBSG.AssemblyInfo.cs
+C:\Desarrollo\Escritorio\SignaBSG\obj\Debug\net8.0-windows\SignaBSG.csproj.CoreCompileInputs.cache
+C:\Desarrollo\Escritorio\SignaBSG\obj\Debug\net8.0-windows\SignaBSG.dll
+C:\Desarrollo\Escritorio\SignaBSG\obj\Debug\net8.0-windows\refint\SignaBSG.dll
+C:\Desarrollo\Escritorio\SignaBSG\obj\Debug\net8.0-windows\SignaBSG.pdb
+C:\Desarrollo\Escritorio\SignaBSG\obj\Debug\net8.0-windows\SignaBSG.genruntimeconfig.cache
+C:\Desarrollo\Escritorio\SignaBSG\obj\Debug\net8.0-windows\ref\SignaBSG.dll
