@@ -52,6 +52,12 @@
       "frameworks": {
         "net8.0-windows7.0": {
           "targetAlias": "net8.0-windows",
+          "dependencies": {
+            "Syncfusion.PdfViewer.Windows": {
+              "target": "Package",
+              "version": "[30.1.39, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",

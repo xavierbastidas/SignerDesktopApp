@@ -1,11 +1,567 @@
 {
   "version": 3,
   "targets": {
-    "net8.0-windows7.0": {}
+    "net8.0-windows7.0": {
+      "Microsoft.WinForms.Designer.SDK/1.6.0": {
+        "type": "package",
+        "dependencies": {
+          "System.CodeDom": "4.6.0",
+          "System.Composition": "6.0.0"
+        },
+        "compile": {
+          "ref/netcoreapp3.1/Microsoft.DotNet.DesignTools.Protocol.dll": {
+            "related": ".xml"
+          },
+          "ref/netcoreapp3.1/Microsoft.DotNet.DesignTools.Server.dll": {
+            "related": ".xml"
+          },
+          "ref/netcoreapp3.1/Microsoft.WinForms.Utilities.Shared.dll": {
+            "related": ".xml"
+          }
+        },
+        "build": {
+          "build/netcoreapp3.1/Microsoft.WinForms.Designer.SDK.props": {},
+          "build/netcoreapp3.1/Microsoft.WinForms.Designer.SDK.targets": {}
+        }
+      },
+      "Syncfusion.Compression.Base/30.1.39": {
+        "type": "package",
+        "compile": {
+          "lib/net8.0-windows7.0/Syncfusion.Compression.Base.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net8.0-windows7.0/Syncfusion.Compression.Base.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "Syncfusion.Licensing/30.1.39": {
+        "type": "package",
+        "compile": {
+          "lib/net8.0/Syncfusion.Licensing.dll": {}
+        },
+        "runtime": {
+          "lib/net8.0/Syncfusion.Licensing.dll": {}
+        }
+      },
+      "Syncfusion.Pdf.WinForms/30.1.39": {
+        "type": "package",
+        "dependencies": {
+          "Syncfusion.Compression.Base": "30.1.39",
+          "Syncfusion.Licensing": "30.1.39"
+        },
+        "compile": {
+          "lib/net8.0-windows7.0/Syncfusion.Pdf.Base.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net8.0-windows7.0/Syncfusion.Pdf.Base.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "Syncfusion.PdfToImageConverter.WinForms/30.1.39": {
+        "type": "package",
+        "dependencies": {
+          "Syncfusion.Licensing": "30.1.39"
+        },
+        "compile": {
+          "lib/net8.0-windows7.0/Syncfusion.PdfToImageConverter.Base.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net8.0-windows7.0/Syncfusion.PdfToImageConverter.Base.dll": {
+            "related": ".xml"
+          }
+        },
+        "build": {
+          "build/net8.0-windows7.0/Syncfusion.PdfToImageConverter.WinForms.targets": {}
+        }
+      },
+      "Syncfusion.PdfViewer.Windows/30.1.39": {
+        "type": "package",
+        "dependencies": {
+          "Syncfusion.Compression.Base": "30.1.39",
+          "Syncfusion.Licensing": "30.1.39",
+          "Syncfusion.Pdf.WinForms": "30.1.39",
+          "Syncfusion.PdfToImageConverter.WinForms": "30.1.39",
+          "Syncfusion.Shared.Base": "30.1.39"
+        },
+        "compile": {
+          "lib/net8.0-windows7.0/Syncfusion.PdfViewer.Windows.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net8.0-windows7.0/Syncfusion.PdfViewer.Windows.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "Syncfusion.Shared.Base/30.1.39": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.WinForms.Designer.SDK": "1.6.0",
+          "Syncfusion.Licensing": "30.1.39"
+        },
+        "compile": {
+          "lib/net8.0-windows7.0/Syncfusion.Shared.Base.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net8.0-windows7.0/Syncfusion.Shared.Base.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "System.CodeDom/4.6.0": {
+        "type": "package",
+        "compile": {
+          "ref/netstandard2.0/System.CodeDom.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/netstandard2.0/System.CodeDom.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "System.Composition/6.0.0": {
+        "type": "package",
+        "dependencies": {
+          "System.Composition.AttributedModel": "6.0.0",
+          "System.Composition.Convention": "6.0.0",
+          "System.Composition.Hosting": "6.0.0",
+          "System.Composition.Runtime": "6.0.0",
+          "System.Composition.TypedParts": "6.0.0"
+        },
+        "build": {
+          "buildTransitive/netcoreapp3.1/_._": {}
+        }
+      },
+      "System.Composition.AttributedModel/6.0.0": {
+        "type": "package",
+        "compile": {
+          "lib/net6.0/System.Composition.AttributedModel.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net6.0/System.Composition.AttributedModel.dll": {
+            "related": ".xml"
+          }
+        },
+        "build": {
+          "buildTransitive/netcoreapp3.1/_._": {}
+        }
+      },
+      "System.Composition.Convention/6.0.0": {
+        "type": "package",
+        "dependencies": {
+          "System.Composition.AttributedModel": "6.0.0"
+        },
+        "compile": {
+          "lib/net6.0/System.Composition.Convention.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net6.0/System.Composition.Convention.dll": {
+            "related": ".xml"
+          }
+        },
+        "build": {
+          "buildTransitive/netcoreapp3.1/_._": {}
+        }
+      },
+      "System.Composition.Hosting/6.0.0": {
+        "type": "package",
+        "dependencies": {
+          "System.Composition.Runtime": "6.0.0"
+        },
+        "compile": {
+          "lib/net6.0/System.Composition.Hosting.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net6.0/System.Composition.Hosting.dll": {
+            "related": ".xml"
+          }
+        },
+        "build": {
+          "buildTransitive/netcoreapp3.1/_._": {}
+        }
+      },
+      "System.Composition.Runtime/6.0.0": {
+        "type": "package",
+        "compile": {
+          "lib/net6.0/System.Composition.Runtime.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net6.0/System.Composition.Runtime.dll": {
+            "related": ".xml"
+          }
+        },
+        "build": {
+          "buildTransitive/netcoreapp3.1/_._": {}
+        }
+      },
+      "System.Composition.TypedParts/6.0.0": {
+        "type": "package",
+        "dependencies": {
+          "System.Composition.AttributedModel": "6.0.0",
+          "System.Composition.Hosting": "6.0.0",
+          "System.Composition.Runtime": "6.0.0"
+        },
+        "compile": {
+          "lib/net6.0/System.Composition.TypedParts.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net6.0/System.Composition.TypedParts.dll": {
+            "related": ".xml"
+          }
+        },
+        "build": {
+          "buildTransitive/netcoreapp3.1/_._": {}
+        }
+      }
+    }
   },
-  "libraries": {},
+  "libraries": {
+    "Microsoft.WinForms.Designer.SDK/1.6.0": {
+      "sha512": "BDIY84GbvQ4ensnD1zuZUmWIypl2muqUm4SM9qZ48OmaN8G5dmos38Dt35aEzMy0sN2Ci6UaJPiY1gwmw5eo7A==",
+      "type": "package",
+      "path": "microsoft.winforms.designer.sdk/1.6.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Icon.png",
+        "PackageLicense.txt",
+        "build/netcoreapp3.1/Microsoft.WinForms.Designer.SDK.props",
+        "build/netcoreapp3.1/Microsoft.WinForms.Designer.SDK.targets",
+        "microsoft.winforms.designer.sdk.1.6.0.nupkg.sha512",
+        "microsoft.winforms.designer.sdk.nuspec",
+        "readme.md",
+        "ref/net472/Microsoft.DotNet.DesignTools.Client.dll",
+        "ref/net472/Microsoft.DotNet.DesignTools.Client.xml",
+        "ref/net472/Microsoft.DotNet.DesignTools.Protocol.dll",
+        "ref/net472/Microsoft.DotNet.DesignTools.Protocol.xml",
+        "ref/net472/Microsoft.WinForms.Utilities.Shared.dll",
+        "ref/net472/Microsoft.WinForms.Utilities.Shared.xml",
+        "ref/netcoreapp3.1/Microsoft.DotNet.DesignTools.Protocol.dll",
+        "ref/netcoreapp3.1/Microsoft.DotNet.DesignTools.Protocol.xml",
+        "ref/netcoreapp3.1/Microsoft.DotNet.DesignTools.Server.dll",
+        "ref/netcoreapp3.1/Microsoft.DotNet.DesignTools.Server.xml",
+        "ref/netcoreapp3.1/Microsoft.WinForms.Utilities.Shared.dll",
+        "ref/netcoreapp3.1/Microsoft.WinForms.Utilities.Shared.xml"
+      ]
+    },
+    "Syncfusion.Compression.Base/30.1.39": {
+      "sha512": "11WTwy9wJ360J6HuwYJVWQCfF0u05IQjvDjuEFSPBpVieJXCNmJakrHEm7CTf5hBmPaoTcFNNA0Ayi2BtylAdQ==",
+      "type": "package",
+      "path": "syncfusion.compression.base/30.1.39",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE.txt",
+        "lib/net462/Syncfusion.Compression.Base.dll",
+        "lib/net462/Syncfusion.Compression.Base.xml",
+        "lib/net8.0-windows7.0/Syncfusion.Compression.Base.dll",
+        "lib/net8.0-windows7.0/Syncfusion.Compression.Base.xml",
+        "lib/net9.0-windows7.0/Syncfusion.Compression.Base.dll",
+        "lib/net9.0-windows7.0/Syncfusion.Compression.Base.xml",
+        "syncfusion.compression.base.30.1.39.nupkg.sha512",
+        "syncfusion.compression.base.nuspec",
+        "syncfusion_logo.png"
+      ]
+    },
+    "Syncfusion.Licensing/30.1.39": {
+      "sha512": "n3vCaSIIb3UCb+Sctj+N3kksyR+8+R+KZTJMwCcdsjYemwpAYLvuBhS5duRYZao4N9jyqyDtJ91F2/X9s+5tGg==",
+      "type": "package",
+      "path": "syncfusion.licensing/30.1.39",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE.txt",
+        "README.md",
+        "lib/MonoAndroid90/Syncfusion.Licensing.dll",
+        "lib/Xamarin.Mac/Syncfusion.Licensing.dll",
+        "lib/Xamarin.iOS10/Syncfusion.Licensing.dll",
+        "lib/net462/Syncfusion.Licensing.dll",
+        "lib/net8.0/Syncfusion.Licensing.dll",
+        "lib/net9.0/Syncfusion.Licensing.dll",
+        "lib/netstandard2.0/Syncfusion.Licensing.dll",
+        "lib/uap10.0/Syncfusion.Licensing.dll",
+        "syncfusion.licensing.30.1.39.nupkg.sha512",
+        "syncfusion.licensing.nuspec",
+        "syncfusion_logo.png"
+      ]
+    },
+    "Syncfusion.Pdf.WinForms/30.1.39": {
+      "sha512": "dasKkqrNrxu+o7/fCeteJeRXW4jZHrGIoiBjfjqYrKl8Th0UfF+mwTYL/AUX4nd44jTwnLSoxZsM9seNJL67oQ==",
+      "type": "package",
+      "path": "syncfusion.pdf.winforms/30.1.39",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE.txt",
+        "README.md",
+        "lib/net462/Syncfusion.Pdf.Base.dll",
+        "lib/net462/Syncfusion.Pdf.Base.xml",
+        "lib/net8.0-windows7.0/Syncfusion.Pdf.Base.dll",
+        "lib/net8.0-windows7.0/Syncfusion.Pdf.Base.xml",
+        "lib/net9.0-windows7.0/Syncfusion.Pdf.Base.dll",
+        "lib/net9.0-windows7.0/Syncfusion.Pdf.Base.xml",
+        "syncfusion.pdf.winforms.30.1.39.nupkg.sha512",
+        "syncfusion.pdf.winforms.nuspec",
+        "syncfusion_logo.png"
+      ]
+    },
+    "Syncfusion.PdfToImageConverter.WinForms/30.1.39": {
+      "sha512": "lD3LNnXA7KBwbZce7nsn0LJ08F6qGEadnB3fT5RC1TSzVoWZKshnirSoUnygEeUhQgAvdD1D1peZubVgslYqfw==",
+      "type": "package",
+      "path": "syncfusion.pdftoimageconverter.winforms/30.1.39",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE.txt",
+        "Pdfium/win-arm64/native/pdfium.dll",
+        "Pdfium/win-x64/native/pdfium.dll",
+        "Pdfium/win-x86/native/pdfium.dll",
+        "README.md",
+        "build/net462/Syncfusion.PdfToImageConverter.WinForms.targets",
+        "build/net8.0-windows7.0/Syncfusion.PdfToImageConverter.WinForms.targets",
+        "build/net9.0-windows7.0/Syncfusion.PdfToImageConverter.WinForms.targets",
+        "lib/net462/Syncfusion.PdfToImageConverter.Base.dll",
+        "lib/net462/Syncfusion.PdfToImageConverter.Base.xml",
+        "lib/net8.0-windows7.0/Syncfusion.PdfToImageConverter.Base.dll",
+        "lib/net8.0-windows7.0/Syncfusion.PdfToImageConverter.Base.xml",
+        "lib/net9.0-windows7.0/Syncfusion.PdfToImageConverter.Base.dll",
+        "lib/net9.0-windows7.0/Syncfusion.PdfToImageConverter.Base.xml",
+        "syncfusion.pdftoimageconverter.winforms.30.1.39.nupkg.sha512",
+        "syncfusion.pdftoimageconverter.winforms.nuspec",
+        "syncfusion_logo.png"
+      ]
+    },
+    "Syncfusion.PdfViewer.Windows/30.1.39": {
+      "sha512": "q5gHLEdU2XCD4jcRM0iMvMi10q2w3tFN2KKToccpVCLCIonf4cutCtgmn3Ss14g6gzCI6T+gMAeFBHOdmhcj0g==",
+      "type": "package",
+      "path": "syncfusion.pdfviewer.windows/30.1.39",
+      "hasTools": true,
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE.txt",
+        "README.md",
+        "lib/net462/Syncfusion.PdfViewer.Windows.dll",
+        "lib/net462/Syncfusion.PdfViewer.Windows.xml",
+        "lib/net8.0-windows7.0/Syncfusion.PdfViewer.Windows.dll",
+        "lib/net8.0-windows7.0/Syncfusion.PdfViewer.Windows.xml",
+        "lib/net9.0-windows7.0/Syncfusion.PdfViewer.Windows.dll",
+        "lib/net9.0-windows7.0/Syncfusion.PdfViewer.Windows.xml",
+        "syncfusion.pdfviewer.windows.30.1.39.nupkg.sha512",
+        "syncfusion.pdfviewer.windows.nuspec",
+        "syncfusion_logo.png",
+        "tools/VisualStudioToolsManifest.xml"
+      ]
+    },
+    "Syncfusion.Shared.Base/30.1.39": {
+      "sha512": "9M8dHeG48LgE1331ZqVALCbPxgLRQa5AkkOd43KwtwEc824pua0JtR7PzJ0oQd3Jn1xChGwm4smkjdTKpNpQrA==",
+      "type": "package",
+      "path": "syncfusion.shared.base/30.1.39",
+      "hasTools": true,
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE.txt",
+        "README.md",
+        "lib/net462/Syncfusion.Shared.Base.dll",
+        "lib/net462/Syncfusion.Shared.Base.xml",
+        "lib/net8.0-windows7.0/Design/WinForms/Server/Syncfusion.Shared.Base.Server.dll",
+        "lib/net8.0-windows7.0/Design/WinForms/Syncfusion.Shared.Base.Client.dll",
+        "lib/net8.0-windows7.0/Syncfusion.Shared.Base.dll",
+        "lib/net8.0-windows7.0/Syncfusion.Shared.Base.xml",
+        "lib/net9.0-windows7.0/Design/WinForms/Server/Syncfusion.Shared.Base.Server.dll",
+        "lib/net9.0-windows7.0/Design/WinForms/Syncfusion.Shared.Base.Client.dll",
+        "lib/net9.0-windows7.0/Syncfusion.Shared.Base.dll",
+        "lib/net9.0-windows7.0/Syncfusion.Shared.Base.xml",
+        "syncfusion.shared.base.30.1.39.nupkg.sha512",
+        "syncfusion.shared.base.nuspec",
+        "syncfusion_logo.png",
+        "tools/VisualStudioToolsManifest.xml"
+      ]
+    },
+    "System.CodeDom/4.6.0": {
+      "sha512": "ArWGZOxPhOaJUd4YgvbTxGZDbVDJHPAOQNiJIpbRDPW6v2NT5xkallQv1zpu8Rwwb5Z3iZ1jwWA4gSQuWgR+jw==",
+      "type": "package",
+      "path": "system.codedom/4.6.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE.TXT",
+        "THIRD-PARTY-NOTICES.TXT",
+        "lib/net461/System.CodeDom.dll",
+        "lib/net461/System.CodeDom.xml",
+        "lib/netstandard2.0/System.CodeDom.dll",
+        "lib/netstandard2.0/System.CodeDom.xml",
+        "ref/net461/System.CodeDom.dll",
+        "ref/net461/System.CodeDom.xml",
+        "ref/netstandard2.0/System.CodeDom.dll",
+        "ref/netstandard2.0/System.CodeDom.xml",
+        "system.codedom.4.6.0.nupkg.sha512",
+        "system.codedom.nuspec",
+        "useSharedDesignerContext.txt",
+        "version.txt"
+      ]
+    },
+    "System.Composition/6.0.0": {
+      "sha512": "d7wMuKQtfsxUa7S13tITC8n1cQzewuhD5iDjZtK2prwFfKVzdYtgrTHgjaV03Zq7feGQ5gkP85tJJntXwInsJA==",
+      "type": "package",
+      "path": "system.composition/6.0.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Icon.png",
+        "LICENSE.TXT",
+        "THIRD-PARTY-NOTICES.TXT",
+        "buildTransitive/netcoreapp2.0/System.Composition.targets",
+        "buildTransitive/netcoreapp3.1/_._",
+        "system.composition.6.0.0.nupkg.sha512",
+        "system.composition.nuspec",
+        "useSharedDesignerContext.txt"
+      ]
+    },
+    "System.Composition.AttributedModel/6.0.0": {
+      "sha512": "WK1nSDLByK/4VoC7fkNiFuTVEiperuCN/Hyn+VN30R+W2ijO1d0Z2Qm0ScEl9xkSn1G2MyapJi8xpf4R8WRa/w==",
+      "type": "package",
+      "path": "system.composition.attributedmodel/6.0.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Icon.png",
+        "LICENSE.TXT",
+        "THIRD-PARTY-NOTICES.TXT",
+        "buildTransitive/netcoreapp2.0/System.Composition.AttributedModel.targets",
+        "buildTransitive/netcoreapp3.1/_._",
+        "lib/net461/System.Composition.AttributedModel.dll",
+        "lib/net461/System.Composition.AttributedModel.xml",
+        "lib/net6.0/System.Composition.AttributedModel.dll",
+        "lib/net6.0/System.Composition.AttributedModel.xml",
+        "lib/netstandard2.0/System.Composition.AttributedModel.dll",
+        "lib/netstandard2.0/System.Composition.AttributedModel.xml",
+        "system.composition.attributedmodel.6.0.0.nupkg.sha512",
+        "system.composition.attributedmodel.nuspec",
+        "useSharedDesignerContext.txt"
+      ]
+    },
+    "System.Composition.Convention/6.0.0": {
+      "sha512": "XYi4lPRdu5bM4JVJ3/UIHAiG6V6lWWUlkhB9ab4IOq0FrRsp0F4wTyV4Dj+Ds+efoXJ3qbLqlvaUozDO7OLeXA==",
+      "type": "package",
+      "path": "system.composition.convention/6.0.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Icon.png",
+        "LICENSE.TXT",
+        "THIRD-PARTY-NOTICES.TXT",
+        "buildTransitive/netcoreapp2.0/System.Composition.Convention.targets",
+        "buildTransitive/netcoreapp3.1/_._",
+        "lib/net461/System.Composition.Convention.dll",
+        "lib/net461/System.Composition.Convention.xml",
+        "lib/net6.0/System.Composition.Convention.dll",
+        "lib/net6.0/System.Composition.Convention.xml",
+        "lib/netstandard2.0/System.Composition.Convention.dll",
+        "lib/netstandard2.0/System.Composition.Convention.xml",
+        "system.composition.convention.6.0.0.nupkg.sha512",
+        "system.composition.convention.nuspec",
+        "useSharedDesignerContext.txt"
+      ]
+    },
+    "System.Composition.Hosting/6.0.0": {
+      "sha512": "w/wXjj7kvxuHPLdzZ0PAUt++qJl03t7lENmb2Oev0n3zbxyNULbWBlnd5J5WUMMv15kg5o+/TCZFb6lSwfaUUQ==",
+      "type": "package",
+      "path": "system.composition.hosting/6.0.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Icon.png",
+        "LICENSE.TXT",
+        "THIRD-PARTY-NOTICES.TXT",
+        "buildTransitive/netcoreapp2.0/System.Composition.Hosting.targets",
+        "buildTransitive/netcoreapp3.1/_._",
+        "lib/net461/System.Composition.Hosting.dll",
+        "lib/net461/System.Composition.Hosting.xml",
+        "lib/net6.0/System.Composition.Hosting.dll",
+        "lib/net6.0/System.Composition.Hosting.xml",
+        "lib/netstandard2.0/System.Composition.Hosting.dll",
+        "lib/netstandard2.0/System.Composition.Hosting.xml",
+        "system.composition.hosting.6.0.0.nupkg.sha512",
+        "system.composition.hosting.nuspec",
+        "useSharedDesignerContext.txt"
+      ]
+    },
+    "System.Composition.Runtime/6.0.0": {
+      "sha512": "qkRH/YBaMPTnzxrS5RDk1juvqed4A6HOD/CwRcDGyPpYps1J27waBddiiq1y93jk2ZZ9wuA/kynM+NO0kb3PKg==",
+      "type": "package",
+      "path": "system.composition.runtime/6.0.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Icon.png",
+        "LICENSE.TXT",
+        "THIRD-PARTY-NOTICES.TXT",
+        "buildTransitive/netcoreapp2.0/System.Composition.Runtime.targets",
+        "buildTransitive/netcoreapp3.1/_._",
+        "lib/net461/System.Composition.Runtime.dll",
+        "lib/net461/System.Composition.Runtime.xml",
+        "lib/net6.0/System.Composition.Runtime.dll",
+        "lib/net6.0/System.Composition.Runtime.xml",
+        "lib/netstandard2.0/System.Composition.Runtime.dll",
+        "lib/netstandard2.0/System.Composition.Runtime.xml",
+        "system.composition.runtime.6.0.0.nupkg.sha512",
+        "system.composition.runtime.nuspec",
+        "useSharedDesignerContext.txt"
+      ]
+    },
+    "System.Composition.TypedParts/6.0.0": {
+      "sha512": "iUR1eHrL8Cwd82neQCJ00MpwNIBs4NZgXzrPqx8NJf/k4+mwBO0XCRmHYJT4OLSwDDqh5nBLJWkz5cROnrGhRA==",
+      "type": "package",
+      "path": "system.composition.typedparts/6.0.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Icon.png",
+        "LICENSE.TXT",
+        "THIRD-PARTY-NOTICES.TXT",
+        "buildTransitive/netcoreapp2.0/System.Composition.TypedParts.targets",
+        "buildTransitive/netcoreapp3.1/_._",
+        "lib/net461/System.Composition.TypedParts.dll",
+        "lib/net461/System.Composition.TypedParts.xml",
+        "lib/net6.0/System.Composition.TypedParts.dll",
+        "lib/net6.0/System.Composition.TypedParts.xml",
+        "lib/netstandard2.0/System.Composition.TypedParts.dll",
+        "lib/netstandard2.0/System.Composition.TypedParts.xml",
+        "system.composition.typedparts.6.0.0.nupkg.sha512",
+        "system.composition.typedparts.nuspec",
+        "useSharedDesignerContext.txt"
+      ]
+    }
+  },
   "projectFileDependencyGroups": {
-    "net8.0-windows7.0": []
+    "net8.0-windows7.0": [
+      "Syncfusion.PdfViewer.Windows >= 30.1.39"
+    ]
   },
   "packageFolders": {
     "C:\\Users\\basti\\.nuget\\packages\\": {},
@@ -60,6 +616,12 @@
     "frameworks": {
       "net8.0-windows7.0": {
         "targetAlias": "net8.0-windows",
+        "dependencies": {
+          "Syncfusion.PdfViewer.Windows": {
+            "target": "Package",
+            "version": "[30.1.39, )"
+          }
+        },
         "imports": [
           "net461",
           "net462",
