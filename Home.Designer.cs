@@ -31,30 +31,30 @@
             components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Home));
             tabControl1_Firmador = new TabControl();
-            tabPage1 = new TabPage();
+            tabPage1_FirmarDocumento = new TabPage();
             button2_Limpiar = new Button();
             button2_Firmar = new Button();
-            groupBox1_Buscar_Documentos = new GroupBox();
-            label1_DocumentosPdf = new Label();
-            label1_Tambien_Busca_Doc = new Label();
-            button1 = new Button();
-            groupBox1_Doc_Selecionados = new GroupBox();
-            label1_Num_Docs = new Label();
+            groupBox1_BuscarDocumento = new GroupBox();
+            label1_DocumentoPdf = new Label();
+            label1_ArrastrarDocumento = new Label();
+            button1_OpenFileDocumento = new Button();
+            groupBox1_DocSelecionados = new GroupBox();
+            label1_NumDocumentos = new Label();
             groupBox2_Contrasenia = new GroupBox();
-            checkBox1_Contrasenia = new CheckBox();
+            checkBox1_MostrarContrasenia = new CheckBox();
             label1_Contrasenia = new Label();
             textBox1_Contrasenia = new TextBox();
-            groupBox1_Buscar_Certificado = new GroupBox();
+            groupBox1_BuscarCertificado = new GroupBox();
             label1_CertificadoP12 = new Label();
-            label1_Arrastre_Certificado = new Label();
-            button1_Buscar_Certificado = new Button();
+            label1_ArrastrarCertificado = new Label();
+            button1_OpenFileCertificado = new Button();
             panel1_Ventana = new Panel();
-            pictureBox1_ico = new PictureBox();
-            label1_Version = new Label();
+            pictureBox1_Icon = new PictureBox();
+            label1_VersionApp = new Label();
             button2_Minimizar = new Button();
             button2_Maximizar = new Button();
             button2_Close = new Button();
-            menuStrip1 = new MenuStrip();
+            menuStrip1_Herramientas = new MenuStrip();
             archivoToolStripMenuItem = new ToolStripMenuItem();
             salirToolStripMenuItem = new ToolStripMenuItem();
             configuraciónToolStripMenuItem = new ToolStripMenuItem();
@@ -69,41 +69,41 @@
             toolTip1 = new ToolTip(components);
             bannerTextProvider1 = new Syncfusion.Windows.Forms.BannerTextProvider(components);
             tabControl1_Firmador.SuspendLayout();
-            tabPage1.SuspendLayout();
-            groupBox1_Buscar_Documentos.SuspendLayout();
-            groupBox1_Doc_Selecionados.SuspendLayout();
+            tabPage1_FirmarDocumento.SuspendLayout();
+            groupBox1_BuscarDocumento.SuspendLayout();
+            groupBox1_DocSelecionados.SuspendLayout();
             groupBox2_Contrasenia.SuspendLayout();
-            groupBox1_Buscar_Certificado.SuspendLayout();
+            groupBox1_BuscarCertificado.SuspendLayout();
             panel1_Ventana.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1_ico).BeginInit();
-            menuStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1_Icon).BeginInit();
+            menuStrip1_Herramientas.SuspendLayout();
             SuspendLayout();
             // 
             // tabControl1_Firmador
             // 
-            tabControl1_Firmador.Controls.Add(tabPage1);
+            tabControl1_Firmador.Controls.Add(tabPage1_FirmarDocumento);
             tabControl1_Firmador.Location = new Point(0, 61);
             tabControl1_Firmador.Name = "tabControl1_Firmador";
             tabControl1_Firmador.SelectedIndex = 0;
             tabControl1_Firmador.Size = new Size(821, 431);
             tabControl1_Firmador.TabIndex = 0;
             // 
-            // tabPage1
+            // tabPage1_FirmarDocumento
             // 
-            tabPage1.BackColor = Color.Transparent;
-            tabPage1.Controls.Add(button2_Limpiar);
-            tabPage1.Controls.Add(button2_Firmar);
-            tabPage1.Controls.Add(groupBox1_Buscar_Documentos);
-            tabPage1.Controls.Add(groupBox1_Doc_Selecionados);
-            tabPage1.Controls.Add(groupBox2_Contrasenia);
-            tabPage1.Controls.Add(groupBox1_Buscar_Certificado);
-            tabPage1.Location = new Point(4, 24);
-            tabPage1.Name = "tabPage1";
-            tabPage1.Padding = new Padding(3);
-            tabPage1.Size = new Size(813, 403);
-            tabPage1.TabIndex = 0;
-            tabPage1.Text = "Firmar documento";
-            tabPage1.Click += tabPage1_Click;
+            tabPage1_FirmarDocumento.BackColor = Color.Transparent;
+            tabPage1_FirmarDocumento.Controls.Add(button2_Limpiar);
+            tabPage1_FirmarDocumento.Controls.Add(button2_Firmar);
+            tabPage1_FirmarDocumento.Controls.Add(groupBox1_BuscarDocumento);
+            tabPage1_FirmarDocumento.Controls.Add(groupBox1_DocSelecionados);
+            tabPage1_FirmarDocumento.Controls.Add(groupBox2_Contrasenia);
+            tabPage1_FirmarDocumento.Controls.Add(groupBox1_BuscarCertificado);
+            tabPage1_FirmarDocumento.Location = new Point(4, 24);
+            tabPage1_FirmarDocumento.Name = "tabPage1_FirmarDocumento";
+            tabPage1_FirmarDocumento.Padding = new Padding(3);
+            tabPage1_FirmarDocumento.Size = new Size(813, 403);
+            tabPage1_FirmarDocumento.TabIndex = 0;
+            tabPage1_FirmarDocumento.Text = "Firmar documento";
+            tabPage1_FirmarDocumento.Click += tabPage1_Click;
             // 
             // button2_Limpiar
             // 
@@ -125,68 +125,68 @@
             button2_Firmar.UseVisualStyleBackColor = true;
             button2_Firmar.Click += btn_Firmar_Documento;
             // 
-            // groupBox1_Buscar_Documentos
+            // groupBox1_BuscarDocumento
             // 
-            groupBox1_Buscar_Documentos.Controls.Add(label1_DocumentosPdf);
-            groupBox1_Buscar_Documentos.Controls.Add(label1_Tambien_Busca_Doc);
-            groupBox1_Buscar_Documentos.Controls.Add(button1);
-            groupBox1_Buscar_Documentos.Location = new Point(353, 3);
-            groupBox1_Buscar_Documentos.Name = "groupBox1_Buscar_Documentos";
-            groupBox1_Buscar_Documentos.Size = new Size(454, 225);
-            groupBox1_Buscar_Documentos.TabIndex = 8;
-            groupBox1_Buscar_Documentos.TabStop = false;
+            groupBox1_BuscarDocumento.Controls.Add(label1_DocumentoPdf);
+            groupBox1_BuscarDocumento.Controls.Add(label1_ArrastrarDocumento);
+            groupBox1_BuscarDocumento.Controls.Add(button1_OpenFileDocumento);
+            groupBox1_BuscarDocumento.Location = new Point(353, 3);
+            groupBox1_BuscarDocumento.Name = "groupBox1_BuscarDocumento";
+            groupBox1_BuscarDocumento.Size = new Size(454, 225);
+            groupBox1_BuscarDocumento.TabIndex = 8;
+            groupBox1_BuscarDocumento.TabStop = false;
             // 
-            // label1_DocumentosPdf
+            // label1_DocumentoPdf
             // 
-            label1_DocumentosPdf.AutoSize = true;
-            label1_DocumentosPdf.Location = new Point(159, 26);
-            label1_DocumentosPdf.Name = "label1_DocumentosPdf";
-            label1_DocumentosPdf.Size = new Size(99, 15);
-            label1_DocumentosPdf.TabIndex = 2;
-            label1_DocumentosPdf.Text = "Documentos PDF";
+            label1_DocumentoPdf.AutoSize = true;
+            label1_DocumentoPdf.Location = new Point(159, 26);
+            label1_DocumentoPdf.Name = "label1_DocumentoPdf";
+            label1_DocumentoPdf.Size = new Size(99, 15);
+            label1_DocumentoPdf.TabIndex = 2;
+            label1_DocumentoPdf.Text = "Documentos PDF";
             // 
-            // label1_Tambien_Busca_Doc
+            // label1_ArrastrarDocumento
             // 
-            label1_Tambien_Busca_Doc.AutoEllipsis = true;
-            label1_Tambien_Busca_Doc.Location = new Point(15, 149);
-            label1_Tambien_Busca_Doc.Name = "label1_Tambien_Busca_Doc";
-            label1_Tambien_Busca_Doc.Size = new Size(433, 20);
-            label1_Tambien_Busca_Doc.TabIndex = 0;
-            label1_Tambien_Busca_Doc.Text = "También lo puedes arrastrar aquí";
-            label1_Tambien_Busca_Doc.Click += label1_Tambien_Busca_Doc_Click;
+            label1_ArrastrarDocumento.AutoEllipsis = true;
+            label1_ArrastrarDocumento.Location = new Point(15, 149);
+            label1_ArrastrarDocumento.Name = "label1_ArrastrarDocumento";
+            label1_ArrastrarDocumento.Size = new Size(433, 20);
+            label1_ArrastrarDocumento.TabIndex = 0;
+            label1_ArrastrarDocumento.Text = "También lo puedes arrastrar aquí";
+            label1_ArrastrarDocumento.Click += label1_Tambien_Busca_Doc_Click;
             // 
-            // button1
+            // button1_OpenFileDocumento
             // 
-            button1.Location = new Point(126, 73);
-            button1.Name = "button1";
-            button1.Size = new Size(172, 37);
-            button1.TabIndex = 1;
-            button1.Text = "Buscar Documentos";
-            button1.UseVisualStyleBackColor = true;
-            button1.Click += button1_Click_Buscar_Documentos;
+            button1_OpenFileDocumento.Location = new Point(126, 73);
+            button1_OpenFileDocumento.Name = "button1_OpenFileDocumento";
+            button1_OpenFileDocumento.Size = new Size(172, 37);
+            button1_OpenFileDocumento.TabIndex = 1;
+            button1_OpenFileDocumento.Text = "Buscar Documentos";
+            button1_OpenFileDocumento.UseVisualStyleBackColor = true;
+            button1_OpenFileDocumento.Click += button1_Click_Buscar_Documentos;
             // 
-            // groupBox1_Doc_Selecionados
+            // groupBox1_DocSelecionados
             // 
-            groupBox1_Doc_Selecionados.Controls.Add(label1_Num_Docs);
-            groupBox1_Doc_Selecionados.Location = new Point(6, 234);
-            groupBox1_Doc_Selecionados.Name = "groupBox1_Doc_Selecionados";
-            groupBox1_Doc_Selecionados.Size = new Size(801, 85);
-            groupBox1_Doc_Selecionados.TabIndex = 7;
-            groupBox1_Doc_Selecionados.TabStop = false;
-            groupBox1_Doc_Selecionados.Enter += groupBox1_Doc_Selecionados_Enter;
+            groupBox1_DocSelecionados.Controls.Add(label1_NumDocumentos);
+            groupBox1_DocSelecionados.Location = new Point(6, 234);
+            groupBox1_DocSelecionados.Name = "groupBox1_DocSelecionados";
+            groupBox1_DocSelecionados.Size = new Size(801, 85);
+            groupBox1_DocSelecionados.TabIndex = 7;
+            groupBox1_DocSelecionados.TabStop = false;
+            groupBox1_DocSelecionados.Enter += groupBox1_Doc_Selecionados_Enter;
             // 
-            // label1_Num_Docs
+            // label1_NumDocumentos
             // 
-            label1_Num_Docs.AutoSize = true;
-            label1_Num_Docs.Location = new Point(18, 19);
-            label1_Num_Docs.Name = "label1_Num_Docs";
-            label1_Num_Docs.Size = new Size(206, 15);
-            label1_Num_Docs.TabIndex = 0;
-            label1_Num_Docs.Text = "0 DOCUMENTO(S) SELECCIONADO(S)";
+            label1_NumDocumentos.AutoSize = true;
+            label1_NumDocumentos.Location = new Point(18, 19);
+            label1_NumDocumentos.Name = "label1_NumDocumentos";
+            label1_NumDocumentos.Size = new Size(206, 15);
+            label1_NumDocumentos.TabIndex = 0;
+            label1_NumDocumentos.Text = "0 DOCUMENTO(S) SELECCIONADO(S)";
             // 
             // groupBox2_Contrasenia
             // 
-            groupBox2_Contrasenia.Controls.Add(checkBox1_Contrasenia);
+            groupBox2_Contrasenia.Controls.Add(checkBox1_MostrarContrasenia);
             groupBox2_Contrasenia.Controls.Add(label1_Contrasenia);
             groupBox2_Contrasenia.Controls.Add(textBox1_Contrasenia);
             groupBox2_Contrasenia.Location = new Point(7, 155);
@@ -195,16 +195,16 @@
             groupBox2_Contrasenia.TabIndex = 6;
             groupBox2_Contrasenia.TabStop = false;
             // 
-            // checkBox1_Contrasenia
+            // checkBox1_MostrarContrasenia
             // 
-            checkBox1_Contrasenia.AutoSize = true;
-            checkBox1_Contrasenia.Location = new Point(245, 32);
-            checkBox1_Contrasenia.Name = "checkBox1_Contrasenia";
-            checkBox1_Contrasenia.Size = new Size(67, 19);
-            checkBox1_Contrasenia.TabIndex = 4;
-            checkBox1_Contrasenia.Text = "mostrar";
-            checkBox1_Contrasenia.UseVisualStyleBackColor = true;
-            checkBox1_Contrasenia.CheckedChanged += checkBox1_Contrasenia_CheckedChanged;
+            checkBox1_MostrarContrasenia.AutoSize = true;
+            checkBox1_MostrarContrasenia.Location = new Point(245, 32);
+            checkBox1_MostrarContrasenia.Name = "checkBox1_MostrarContrasenia";
+            checkBox1_MostrarContrasenia.Size = new Size(67, 19);
+            checkBox1_MostrarContrasenia.TabIndex = 4;
+            checkBox1_MostrarContrasenia.Text = "mostrar";
+            checkBox1_MostrarContrasenia.UseVisualStyleBackColor = true;
+            checkBox1_MostrarContrasenia.CheckedChanged += checkBox1_Contrasenia_CheckedChanged;
             // 
             // label1_Contrasenia
             // 
@@ -224,16 +224,16 @@
             textBox1_Contrasenia.UseSystemPasswordChar = true;
             textBox1_Contrasenia.TextChanged += textBox1_TextChanged;
             // 
-            // groupBox1_Buscar_Certificado
+            // groupBox1_BuscarCertificado
             // 
-            groupBox1_Buscar_Certificado.Controls.Add(label1_CertificadoP12);
-            groupBox1_Buscar_Certificado.Controls.Add(label1_Arrastre_Certificado);
-            groupBox1_Buscar_Certificado.Controls.Add(button1_Buscar_Certificado);
-            groupBox1_Buscar_Certificado.Location = new Point(6, 6);
-            groupBox1_Buscar_Certificado.Name = "groupBox1_Buscar_Certificado";
-            groupBox1_Buscar_Certificado.Size = new Size(329, 143);
-            groupBox1_Buscar_Certificado.TabIndex = 5;
-            groupBox1_Buscar_Certificado.TabStop = false;
+            groupBox1_BuscarCertificado.Controls.Add(label1_CertificadoP12);
+            groupBox1_BuscarCertificado.Controls.Add(label1_ArrastrarCertificado);
+            groupBox1_BuscarCertificado.Controls.Add(button1_OpenFileCertificado);
+            groupBox1_BuscarCertificado.Location = new Point(6, 6);
+            groupBox1_BuscarCertificado.Name = "groupBox1_BuscarCertificado";
+            groupBox1_BuscarCertificado.Size = new Size(329, 143);
+            groupBox1_BuscarCertificado.TabIndex = 5;
+            groupBox1_BuscarCertificado.TabStop = false;
             // 
             // label1_CertificadoP12
             // 
@@ -245,32 +245,32 @@
             label1_CertificadoP12.TabIndex = 2;
             label1_CertificadoP12.Text = "Certificado P12";
             // 
-            // label1_Arrastre_Certificado
+            // label1_ArrastrarCertificado
             // 
-            label1_Arrastre_Certificado.AccessibleName = "";
-            label1_Arrastre_Certificado.AutoEllipsis = true;
-            label1_Arrastre_Certificado.Location = new Point(7, 106);
-            label1_Arrastre_Certificado.Name = "label1_Arrastre_Certificado";
-            label1_Arrastre_Certificado.Size = new Size(306, 20);
-            label1_Arrastre_Certificado.TabIndex = 0;
-            label1_Arrastre_Certificado.Text = "También lo puedes arrastrar aquí";
-            label1_Arrastre_Certificado.Click += label1_Buscar_Certififcado_Click;
+            label1_ArrastrarCertificado.AccessibleName = "";
+            label1_ArrastrarCertificado.AutoEllipsis = true;
+            label1_ArrastrarCertificado.Location = new Point(7, 106);
+            label1_ArrastrarCertificado.Name = "label1_ArrastrarCertificado";
+            label1_ArrastrarCertificado.Size = new Size(306, 20);
+            label1_ArrastrarCertificado.TabIndex = 0;
+            label1_ArrastrarCertificado.Text = "También lo puedes arrastrar aquí";
+            label1_ArrastrarCertificado.Click += label1_Buscar_Certififcado_Click;
             // 
-            // button1_Buscar_Certificado
+            // button1_OpenFileCertificado
             // 
-            button1_Buscar_Certificado.Location = new Point(55, 54);
-            button1_Buscar_Certificado.Name = "button1_Buscar_Certificado";
-            button1_Buscar_Certificado.Size = new Size(145, 37);
-            button1_Buscar_Certificado.TabIndex = 1;
-            button1_Buscar_Certificado.Text = "Buscar Certificado";
-            button1_Buscar_Certificado.UseVisualStyleBackColor = true;
-            button1_Buscar_Certificado.Click += button1_Buscar_Certificado_Click;
+            button1_OpenFileCertificado.Location = new Point(55, 54);
+            button1_OpenFileCertificado.Name = "button1_OpenFileCertificado";
+            button1_OpenFileCertificado.Size = new Size(145, 37);
+            button1_OpenFileCertificado.TabIndex = 1;
+            button1_OpenFileCertificado.Text = "Buscar Certificado";
+            button1_OpenFileCertificado.UseVisualStyleBackColor = true;
+            button1_OpenFileCertificado.Click += button1_Buscar_Certificado_Click;
             // 
             // panel1_Ventana
             // 
             panel1_Ventana.AutoSize = true;
-            panel1_Ventana.Controls.Add(pictureBox1_ico);
-            panel1_Ventana.Controls.Add(label1_Version);
+            panel1_Ventana.Controls.Add(pictureBox1_Icon);
+            panel1_Ventana.Controls.Add(label1_VersionApp);
             panel1_Ventana.Controls.Add(button2_Minimizar);
             panel1_Ventana.Controls.Add(button2_Maximizar);
             panel1_Ventana.Controls.Add(button2_Close);
@@ -282,26 +282,26 @@
             panel1_Ventana.Paint += panel1_Ventana_Paint;
             panel1_Ventana.MouseDown += panel1_MouseDown;
             // 
-            // pictureBox1_ico
+            // pictureBox1_Icon
             // 
-            pictureBox1_ico.Image = Properties.Resources.image;
-            pictureBox1_ico.Location = new Point(4, 8);
-            pictureBox1_ico.Name = "pictureBox1_ico";
-            pictureBox1_ico.Size = new Size(39, 23);
-            pictureBox1_ico.SizeMode = PictureBoxSizeMode.StretchImage;
-            pictureBox1_ico.TabIndex = 6;
-            pictureBox1_ico.TabStop = false;
-            pictureBox1_ico.Click += pictureBox1_Click;
+            pictureBox1_Icon.Image = Properties.Resources.image;
+            pictureBox1_Icon.Location = new Point(4, 8);
+            pictureBox1_Icon.Name = "pictureBox1_Icon";
+            pictureBox1_Icon.Size = new Size(39, 23);
+            pictureBox1_Icon.SizeMode = PictureBoxSizeMode.StretchImage;
+            pictureBox1_Icon.TabIndex = 6;
+            pictureBox1_Icon.TabStop = false;
+            pictureBox1_Icon.Click += pictureBox1_Click;
             // 
-            // label1_Version
+            // label1_VersionApp
             // 
-            label1_Version.AutoSize = true;
-            label1_Version.Location = new Point(49, 8);
-            label1_Version.Name = "label1_Version";
-            label1_Version.Size = new Size(45, 15);
-            label1_Version.TabIndex = 5;
-            label1_Version.Text = "Version";
-            label1_Version.TextAlign = ContentAlignment.BottomCenter;
+            label1_VersionApp.AutoSize = true;
+            label1_VersionApp.Location = new Point(49, 8);
+            label1_VersionApp.Name = "label1_VersionApp";
+            label1_VersionApp.Size = new Size(45, 15);
+            label1_VersionApp.TabIndex = 5;
+            label1_VersionApp.Text = "Version";
+            label1_VersionApp.TextAlign = ContentAlignment.BottomCenter;
             // 
             // button2_Minimizar
             // 
@@ -336,15 +336,15 @@
             button2_Close.UseVisualStyleBackColor = true;
             button2_Close.Click += button2_Close_Click;
             // 
-            // menuStrip1
+            // menuStrip1_Herramientas
             // 
-            menuStrip1.Items.AddRange(new ToolStripItem[] { archivoToolStripMenuItem, configuraciónToolStripMenuItem, ayudaToolStripMenuItem });
-            menuStrip1.Location = new Point(0, 34);
-            menuStrip1.Name = "menuStrip1";
-            menuStrip1.RightToLeft = RightToLeft.No;
-            menuStrip1.Size = new Size(820, 24);
-            menuStrip1.TabIndex = 3;
-            menuStrip1.Text = "menuStrip1";
+            menuStrip1_Herramientas.Items.AddRange(new ToolStripItem[] { archivoToolStripMenuItem, configuraciónToolStripMenuItem, ayudaToolStripMenuItem });
+            menuStrip1_Herramientas.Location = new Point(0, 34);
+            menuStrip1_Herramientas.Name = "menuStrip1_Herramientas";
+            menuStrip1_Herramientas.RightToLeft = RightToLeft.No;
+            menuStrip1_Herramientas.Size = new Size(820, 24);
+            menuStrip1_Herramientas.TabIndex = 3;
+            menuStrip1_Herramientas.Text = "menuStrip1";
             // 
             // archivoToolStripMenuItem
             // 
@@ -357,7 +357,7 @@
             // salirToolStripMenuItem
             // 
             salirToolStripMenuItem.Name = "salirToolStripMenuItem";
-            salirToolStripMenuItem.Size = new Size(96, 22);
+            salirToolStripMenuItem.Size = new Size(180, 22);
             salirToolStripMenuItem.Text = "Salir";
             salirToolStripMenuItem.Click += salirToolStripMenuItem_Click;
             // 
@@ -431,7 +431,7 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(820, 491);
-            Controls.Add(menuStrip1);
+            Controls.Add(menuStrip1_Herramientas);
             Controls.Add(panel1_Ventana);
             Controls.Add(tabControl1_Firmador);
             Icon = (Icon)resources.GetObject("$this.Icon");
@@ -439,20 +439,20 @@
             StartPosition = FormStartPosition.CenterScreen;
             Load += Home_Load;
             tabControl1_Firmador.ResumeLayout(false);
-            tabPage1.ResumeLayout(false);
-            groupBox1_Buscar_Documentos.ResumeLayout(false);
-            groupBox1_Buscar_Documentos.PerformLayout();
-            groupBox1_Doc_Selecionados.ResumeLayout(false);
-            groupBox1_Doc_Selecionados.PerformLayout();
+            tabPage1_FirmarDocumento.ResumeLayout(false);
+            groupBox1_BuscarDocumento.ResumeLayout(false);
+            groupBox1_BuscarDocumento.PerformLayout();
+            groupBox1_DocSelecionados.ResumeLayout(false);
+            groupBox1_DocSelecionados.PerformLayout();
             groupBox2_Contrasenia.ResumeLayout(false);
             groupBox2_Contrasenia.PerformLayout();
-            groupBox1_Buscar_Certificado.ResumeLayout(false);
-            groupBox1_Buscar_Certificado.PerformLayout();
+            groupBox1_BuscarCertificado.ResumeLayout(false);
+            groupBox1_BuscarCertificado.PerformLayout();
             panel1_Ventana.ResumeLayout(false);
             panel1_Ventana.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1_ico).EndInit();
-            menuStrip1.ResumeLayout(false);
-            menuStrip1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1_Icon).EndInit();
+            menuStrip1_Herramientas.ResumeLayout(false);
+            menuStrip1_Herramientas.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -460,26 +460,26 @@
         #endregion
 
         private TabControl tabControl1_Firmador;
-        private TabPage tabPage1;
-        private Label label1_Arrastre_Certificado;
-        private Button button1_Buscar_Certificado;
+        private TabPage tabPage1_FirmarDocumento;
+        private Label label1_ArrastrarCertificado;
+        private Button button1_OpenFileCertificado;
         private Panel panel2;
-        private GroupBox groupBox1_Buscar_Certificado;
+        private GroupBox groupBox1_BuscarCertificado;
         private GroupBox groupBox2_Contrasenia;
         private Label label1_Contrasenia;
         private TextBox textBox1_Contrasenia;
-        private GroupBox groupBox1_Doc_Selecionados;
-        private Label label1_Num_Docs;
+        private GroupBox groupBox1_DocSelecionados;
+        private Label label1_NumDocumentos;
         private Button button2_Limpiar;
         private Button button2_Firmar;
-        private GroupBox groupBox1_Buscar_Documentos;
-        private Label label1_Tambien_Busca_Doc;
-        private Button button1;
+        private GroupBox groupBox1_BuscarDocumento;
+        private Label label1_ArrastrarDocumento;
+        private Button button1_OpenFileDocumento;
         private Label label1_CertificadoP12;
-        private Label label1_DocumentosPdf;
-        private CheckBox checkBox1_Contrasenia;
+        private Label label1_DocumentoPdf;
+        private CheckBox checkBox1_MostrarContrasenia;
         private Panel panel1_Ventana;
-        private MenuStrip menuStrip1;
+        private MenuStrip menuStrip1_Herramientas;
         private ToolStripMenuItem archivoToolStripMenuItem;
         private ToolStripMenuItem salirToolStripMenuItem;
         private ToolStripMenuItem configuraciónToolStripMenuItem;
@@ -494,9 +494,9 @@
         private Button button2_Close;
         private Button button2_Minimizar;
         private Button button2_Maximizar;
-        private Label label1_Version;
+        private Label label1_VersionApp;
         private ToolTip toolTip1;
         private Syncfusion.Windows.Forms.BannerTextProvider bannerTextProvider1;
-        private PictureBox pictureBox1_ico;
+        private PictureBox pictureBox1_Icon;
     }
 }

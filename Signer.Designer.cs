@@ -28,32 +28,33 @@
         /// </summary>
         private void InitializeComponent()
         {
-            Syncfusion.Windows.Forms.PdfViewer.MessageBoxSettings messageBoxSettings1 = new Syncfusion.Windows.Forms.PdfViewer.MessageBoxSettings();
-            Syncfusion.Windows.PdfViewer.PdfViewerPrinterSettings pdfViewerPrinterSettings1 = new Syncfusion.Windows.PdfViewer.PdfViewerPrinterSettings();
+            Syncfusion.Windows.Forms.PdfViewer.MessageBoxSettings messageBoxSettings2 = new Syncfusion.Windows.Forms.PdfViewer.MessageBoxSettings();
+            Syncfusion.Windows.PdfViewer.PdfViewerPrinterSettings pdfViewerPrinterSettings2 = new Syncfusion.Windows.PdfViewer.PdfViewerPrinterSettings();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Signer));
-            Syncfusion.Windows.Forms.PdfViewer.TextSearchSettings textSearchSettings1 = new Syncfusion.Windows.Forms.PdfViewer.TextSearchSettings();
+            Syncfusion.Windows.Forms.PdfViewer.TextSearchSettings textSearchSettings2 = new Syncfusion.Windows.Forms.PdfViewer.TextSearchSettings();
             panel1_Ventana = new Panel();
             button1_Close = new Button();
-            pictureBox1_ico = new PictureBox();
-            label1_Version = new Label();
+            pictureBox1_Icon = new PictureBox();
+            label1_VersionApp = new Label();
             button2_Close = new Button();
             pdfViewerControl1 = new Syncfusion.Windows.Forms.PdfViewer.PdfViewerControl();
             panel1_Ventana.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1_ico).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1_Icon).BeginInit();
             SuspendLayout();
             // 
             // panel1_Ventana
             // 
             panel1_Ventana.AutoSize = true;
             panel1_Ventana.Controls.Add(button1_Close);
-            panel1_Ventana.Controls.Add(pictureBox1_ico);
-            panel1_Ventana.Controls.Add(label1_Version);
+            panel1_Ventana.Controls.Add(pictureBox1_Icon);
+            panel1_Ventana.Controls.Add(label1_VersionApp);
             panel1_Ventana.Controls.Add(button2_Close);
             panel1_Ventana.Dock = DockStyle.Top;
             panel1_Ventana.Location = new Point(0, 0);
             panel1_Ventana.Name = "panel1_Ventana";
             panel1_Ventana.Size = new Size(769, 34);
             panel1_Ventana.TabIndex = 2;
+            panel1_Ventana.Paint += panel1_Ventana_Paint;
             panel1_Ventana.MouseDown += panel1_Ventana_MouseDown;
             // 
             // button1_Close
@@ -66,25 +67,25 @@
             button1_Close.UseVisualStyleBackColor = true;
             button1_Close.Click += button1_Click;
             // 
-            // pictureBox1_ico
+            // pictureBox1_Icon
             // 
-            pictureBox1_ico.Image = Properties.Resources.image;
-            pictureBox1_ico.Location = new Point(4, 8);
-            pictureBox1_ico.Name = "pictureBox1_ico";
-            pictureBox1_ico.Size = new Size(39, 23);
-            pictureBox1_ico.SizeMode = PictureBoxSizeMode.StretchImage;
-            pictureBox1_ico.TabIndex = 6;
-            pictureBox1_ico.TabStop = false;
+            pictureBox1_Icon.Image = Properties.Resources.image;
+            pictureBox1_Icon.Location = new Point(4, 8);
+            pictureBox1_Icon.Name = "pictureBox1_Icon";
+            pictureBox1_Icon.Size = new Size(39, 23);
+            pictureBox1_Icon.SizeMode = PictureBoxSizeMode.StretchImage;
+            pictureBox1_Icon.TabIndex = 6;
+            pictureBox1_Icon.TabStop = false;
             // 
-            // label1_Version
+            // label1_VersionApp
             // 
-            label1_Version.AutoSize = true;
-            label1_Version.Location = new Point(49, 8);
-            label1_Version.Name = "label1_Version";
-            label1_Version.Size = new Size(45, 15);
-            label1_Version.TabIndex = 5;
-            label1_Version.Text = "Version";
-            label1_Version.TextAlign = ContentAlignment.BottomCenter;
+            label1_VersionApp.AutoSize = true;
+            label1_VersionApp.Location = new Point(49, 8);
+            label1_VersionApp.Name = "label1_VersionApp";
+            label1_VersionApp.Size = new Size(45, 15);
+            label1_VersionApp.TabIndex = 5;
+            label1_VersionApp.Text = "Version";
+            label1_VersionApp.TextAlign = ContentAlignment.BottomCenter;
             // 
             // button2_Close
             // 
@@ -105,17 +106,17 @@
             pdfViewerControl1.IsTextSearchEnabled = true;
             pdfViewerControl1.IsTextSelectionEnabled = true;
             pdfViewerControl1.Location = new Point(0, 37);
-            messageBoxSettings1.EnableNotification = true;
-            pdfViewerControl1.MessageBoxSettings = messageBoxSettings1;
+            messageBoxSettings2.EnableNotification = true;
+            pdfViewerControl1.MessageBoxSettings = messageBoxSettings2;
             pdfViewerControl1.MinimumZoomPercentage = 50;
             pdfViewerControl1.Name = "pdfViewerControl1";
             pdfViewerControl1.PageBorderThickness = 1;
-            pdfViewerPrinterSettings1.Copies = 1;
-            pdfViewerPrinterSettings1.PageOrientation = Syncfusion.Windows.PdfViewer.PdfViewerPrintOrientation.Auto;
-            pdfViewerPrinterSettings1.PageSize = Syncfusion.Windows.PdfViewer.PdfViewerPrintSize.ActualSize;
-            pdfViewerPrinterSettings1.PrintLocation = (PointF)resources.GetObject("pdfViewerPrinterSettings1.PrintLocation");
-            pdfViewerPrinterSettings1.ShowPrintStatusDialog = true;
-            pdfViewerControl1.PrinterSettings = pdfViewerPrinterSettings1;
+            pdfViewerPrinterSettings2.Copies = 1;
+            pdfViewerPrinterSettings2.PageOrientation = Syncfusion.Windows.PdfViewer.PdfViewerPrintOrientation.Auto;
+            pdfViewerPrinterSettings2.PageSize = Syncfusion.Windows.PdfViewer.PdfViewerPrintSize.ActualSize;
+            pdfViewerPrinterSettings2.PrintLocation = (PointF)resources.GetObject("pdfViewerPrinterSettings2.PrintLocation");
+            pdfViewerPrinterSettings2.ShowPrintStatusDialog = true;
+            pdfViewerControl1.PrinterSettings = pdfViewerPrinterSettings2;
             pdfViewerControl1.ReferencePath = null;
             pdfViewerControl1.ScrollDisplacementValue = 0;
             pdfViewerControl1.ShowHorizontalScrollBar = true;
@@ -125,10 +126,11 @@
             pdfViewerControl1.SpaceBetweenPages = 8;
             pdfViewerControl1.TabIndex = 3;
             pdfViewerControl1.Text = "pdfViewerControl1";
-            textSearchSettings1.CurrentInstanceColor = Color.FromArgb(127, 255, 171, 64);
-            textSearchSettings1.HighlightAllInstance = true;
-            textSearchSettings1.OtherInstanceColor = Color.FromArgb(127, 254, 255, 0);
-            pdfViewerControl1.TextSearchSettings = textSearchSettings1;
+            textSearchSettings2.CurrentInstanceColor = Color.FromArgb(127, 255, 171, 64);
+            textSearchSettings2.HighlightAllInstance = true;
+            textSearchSettings2.OtherInstanceColor = Color.FromArgb(127, 254, 255, 0);
+            pdfViewerControl1.TextSearchSettings = textSearchSettings2;
+            pdfViewerControl1.ThemeName = "Default";
             pdfViewerControl1.VerticalScrollOffset = 0;
             pdfViewerControl1.VisualStyle = Syncfusion.Windows.Forms.PdfViewer.VisualStyle.Default;
             pdfViewerControl1.ZoomMode = Syncfusion.Windows.Forms.PdfViewer.ZoomMode.Default;
@@ -150,15 +152,15 @@
             Load += Signer_Load;
             panel1_Ventana.ResumeLayout(false);
             panel1_Ventana.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1_ico).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1_Icon).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
 
         #endregion
         private Panel panel1_Ventana;
-        private PictureBox pictureBox1_ico;
-        private Label label1_Version;
+        private PictureBox pictureBox1_Icon;
+        private Label label1_VersionApp;
         private Button button2_Close;
         private Button button1_Close;
         private Syncfusion.Windows.Forms.PdfViewer.PdfViewerControl pdfViewerControl1;
