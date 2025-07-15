@@ -9,8 +9,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Folder Include="Components\" />
     <Folder Include="Dtos\" />
     <Folder Include="Resources\Iconos\" />
+    <Folder Include="Resources\Imagenes\" />
     <Folder Include="Services\" />
   </ItemGroup>
 

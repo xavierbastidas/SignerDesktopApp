@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -55,12 +56,13 @@ namespace SignaBSG.Resources.Colors
 
                 case Label lbl:
                     lbl.ForeColor = TextoPrincipal;
+                    lbl.BorderStyle = BorderStyle.None;
                     break;
-
+               
                 case TextBox txt:
                     txt.BackColor = Color.White;
                     txt.ForeColor = TextoPrincipal;
-                    txt.BorderStyle = BorderStyle.FixedSingle;
+                    txt.BorderStyle = BorderStyle.None;
                     break;
 
                 case GroupBox group:
@@ -97,7 +99,16 @@ namespace SignaBSG.Resources.Colors
                         e.Graphics.FillRectangle(backgroundBrush, tabBounds);
                         e.Graphics.DrawString(tab.TabPages[e.Index].Text, e.Font, textBrush, tabBounds.X + 6, tabBounds.Y + 5);
                     };
+
+                    // Este evento es clave para quitar el fondo blanco
+                    tabs.Paint += (s, e) =>
+                    {
+                        e.Graphics.Clear(FondoFormulario);
+                    };
+
                     break;
+
+
 
                 case TabPage tabPage:
                     tabPage.BackColor = FondoFormulario;

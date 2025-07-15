@@ -1,4 +1,5 @@
-﻿using System;
+﻿
+using System;
 using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Windows.Forms;
@@ -51,12 +52,13 @@ public static class DarkMode
 
             case Label lbl:
                 lbl.ForeColor = TextoPrincipal;
+                lbl.BorderStyle = BorderStyle.None;
                 break;
 
             case TextBox txt:
                 txt.BackColor = Color.FromArgb(64, 64, 64); // Gris oscuro
                 txt.ForeColor = TextoPrincipal;
-                txt.BorderStyle = BorderStyle.FixedSingle;
+                txt.BorderStyle = BorderStyle.None;
                 txt.Font = new Font("Segoe UI", 10F);
                 break;
 
@@ -74,27 +76,57 @@ public static class DarkMode
                     }
                 };
                 break;
-
             case TabControl tabs:
                 tabs.DrawMode = TabDrawMode.OwnerDrawFixed;
                 tabs.Appearance = TabAppearance.Normal;
-                tabs.ItemSize = new Size(100, 25);
-                tabs.SizeMode = TabSizeMode.Normal;
-                tabs.BackColor = FondoFormulario;
-                tabs.ForeColor = TextoPrincipal;
+                tabs.ItemSize = new Size(120, 30);
+                tabs.SizeMode = TabSizeMode.Fixed;
+                tabs.Multiline = false;
+
+               // tabs.SetStyle(ControlStyles.UserPaint, true); // importante
 
                 tabs.DrawItem += (s, e) =>
                 {
                     TabControl tab = s as TabControl;
                     bool isSelected = (e.Index == tab.SelectedIndex);
-                    Brush backgroundBrush = new SolidBrush(isSelected ? CampoFondo : ColorTranslator.FromHtml("#2B3035"));
-                    Brush textBrush = new SolidBrush(TextoPrincipal);
                     Rectangle tabBounds = e.Bounds;
 
-                    e.Graphics.FillRectangle(backgroundBrush, tabBounds);
-                    e.Graphics.DrawString(tab.TabPages[e.Index].Text, e.Font, textBrush, tabBounds.X + 6, tabBounds.Y + 5);
+                    // Fondo de pestaña seleccionada y no seleccionada
+                    Color backgroundColor = isSelected ? CampoFondo : ColorTranslator.FromHtml("#2B3035");
+
+                    using (SolidBrush backBrush = new SolidBrush(backgroundColor))
+                    using (SolidBrush textBrush = new SolidBrush(TextoPrincipal))
+                    {
+                        // Fondo de la pestaña
+                        e.Graphics.FillRectangle(backBrush, tabBounds);
+
+                        // Texto centrado
+                        StringFormat sf = new StringFormat
+                        {
+                            Alignment = StringAlignment.Center,
+                            LineAlignment = StringAlignment.Center
+                        };
+
+                        e.Graphics.DrawString(tab.TabPages[e.Index].Text, e.Font, textBrush, tabBounds, sf);
+                    }
                 };
+
+                // Dibuja el área que normalmente queda blanca detrás de las pestañas
+                tabs.Paint += (s, e) =>
+                {
+                    Rectangle tabRect = tabs.GetTabRect(0); // Altura del área de pestañas
+                    Rectangle headerRect = new Rectangle(0, 0, tabs.Width, tabRect.Bottom + 1);
+
+                    using (SolidBrush headerBrush = new SolidBrush(FondoFormulario))
+                    {
+                        e.Graphics.FillRectangle(headerBrush, headerRect);
+                    }
+                };
+
                 break;
+
+
+
 
             case TabPage tabPage:
                 tabPage.BackColor = FondoFormulario;

@@ -1,5 +1,6 @@
 ﻿using SignaBSG.Resources.Colors;
 using SignaBSG.Resources.Estilos;
+using System.Runtime.InteropServices;
 
 
 namespace SignaBSG
@@ -39,16 +40,30 @@ namespace SignaBSG
 
         }
 
+
+
+        // DLLs para mover el formulario
+        [DllImport("user32.dll")]
+        public static extern bool ReleaseCapture();
+
+        [DllImport("user32.dll")]
+        public static extern int SendMessage(IntPtr hWnd, int Msg, int wParam, int lParam);
+
+        public const int WM_NCLBUTTONDOWN = 0xA1;
+        public const int HTCAPTION = 0x2;
         private void Home_Load(object sender, EventArgs e)
 
 
         {
 
-            this.Text = $"SignaBG {version}";
+            label1_Version.Text = $"SignaBG {version}";
+
 
             SetupDragAndDrop(groupBox1_Buscar_Certificado, ".p12", GroupBoxCertificado_DragDrop);
             SetupDragAndDrop(groupBox1_Buscar_Documentos, ".pdf", GroupBoxDocumento_DragDrop);
         }
+
+
 
         // --- DRAG & DROP HELPERS ---
         private void SetupDragAndDrop(Control control, string extension, DragEventHandler dropHandler)
@@ -178,7 +193,7 @@ namespace SignaBSG
         }
 
         // --- MENÚ ---
-        private void salirToolStripMenuItem_Click(object sender, EventArgs e) => Application.Exit();
+        private void salirToolStripMenuItem_Click(object sender, EventArgs e) => this.Close();
 
 
 
@@ -266,6 +281,36 @@ namespace SignaBSG
         }
 
         private void panel1_MouseDown(object sender, MouseEventArgs e)
+        {
+
+            ReleaseCapture();
+            SendMessage(this.Handle, WM_NCLBUTTONDOWN, HTCAPTION, 0);
+        }
+
+        private void button2_Close_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void button2_Maximizar_Click(object sender, EventArgs e)
+        {
+            if (this.WindowState == FormWindowState.Normal)
+                this.WindowState = FormWindowState.Maximized;
+            else
+                this.WindowState = FormWindowState.Normal;
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Minimized;
+        }
+
+        private void panel1_Ventana_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
         {
 
         }
