@@ -1,9 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "ZUBBWTHFomQ=",
+  "dgSpecHash": "+LHREyAuT5I=",
   "success": true,
   "projectFilePath": "C:\\Desarrollo\\Escritorio\\SignaBSG\\SignaBSG.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\basti\\.nuget\\packages\\microsoft.aspnetcore.http.features\\5.0.17\\microsoft.aspnetcore.http.features.5.0.17.nupkg.sha512",
+    "C:\\Users\\basti\\.nuget\\packages\\microsoft.extensions.primitives\\5.0.1\\microsoft.extensions.primitives.5.0.1.nupkg.sha512",
     "C:\\Users\\basti\\.nuget\\packages\\microsoft.winforms.designer.sdk\\1.6.0\\microsoft.winforms.designer.sdk.1.6.0.nupkg.sha512",
     "C:\\Users\\basti\\.nuget\\packages\\syncfusion.compression.base\\30.1.39\\syncfusion.compression.base.30.1.39.nupkg.sha512",
     "C:\\Users\\basti\\.nuget\\packages\\syncfusion.licensing\\30.1.39\\syncfusion.licensing.30.1.39.nupkg.sha512",
@@ -17,7 +19,8 @@
     "C:\\Users\\basti\\.nuget\\packages\\system.composition.convention\\6.0.0\\system.composition.convention.6.0.0.nupkg.sha512",
     "C:\\Users\\basti\\.nuget\\packages\\system.composition.hosting\\6.0.0\\system.composition.hosting.6.0.0.nupkg.sha512",
     "C:\\Users\\basti\\.nuget\\packages\\system.composition.runtime\\6.0.0\\system.composition.runtime.6.0.0.nupkg.sha512",
-    "C:\\Users\\basti\\.nuget\\packages\\system.composition.typedparts\\6.0.0\\system.composition.typedparts.6.0.0.nupkg.sha512"
+    "C:\\Users\\basti\\.nuget\\packages\\system.composition.typedparts\\6.0.0\\system.composition.typedparts.6.0.0.nupkg.sha512",
+    "C:\\Users\\basti\\.nuget\\packages\\system.io.pipelines\\5.0.2\\system.io.pipelines.5.0.2.nupkg.sha512"
   ],
   "logs": []
 }

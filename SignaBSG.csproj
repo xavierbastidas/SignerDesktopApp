@@ -10,12 +10,11 @@
 
   <ItemGroup>
     <Folder Include="Components\" />
-    <Folder Include="Dtos\" />
     <Folder Include="Resources\Imagenes\" />
-    <Folder Include="Services\" />
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Http.Features" Version="5.0.17" />
     <PackageReference Include="Syncfusion.PdfViewer.Windows" Version="30.1.39" />
   </ItemGroup>
 

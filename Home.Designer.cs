@@ -30,8 +30,6 @@
         {
             components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Home));
-            tabControl1_Firmador = new TabControl();
-            tabPage1_FirmarDocumento = new TabPage();
             button2_Limpiar = new Button();
             button2_Firmar = new Button();
             groupBox1_BuscarDocumento = new GroupBox();
@@ -68,8 +66,7 @@
             comoUsarLaAppToolStripMenuItem = new ToolStripMenuItem();
             toolTip1 = new ToolTip(components);
             bannerTextProvider1 = new Syncfusion.Windows.Forms.BannerTextProvider(components);
-            tabControl1_Firmador.SuspendLayout();
-            tabPage1_FirmarDocumento.SuspendLayout();
+            panel1_Firmador = new Panel();
             groupBox1_BuscarDocumento.SuspendLayout();
             groupBox1_DocSelecionados.SuspendLayout();
             groupBox2_Contrasenia.SuspendLayout();
@@ -77,37 +74,12 @@
             panel1_Ventana.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1_Icon).BeginInit();
             menuStrip1_Herramientas.SuspendLayout();
+            panel1_Firmador.SuspendLayout();
             SuspendLayout();
-            // 
-            // tabControl1_Firmador
-            // 
-            tabControl1_Firmador.Controls.Add(tabPage1_FirmarDocumento);
-            tabControl1_Firmador.Location = new Point(0, 61);
-            tabControl1_Firmador.Name = "tabControl1_Firmador";
-            tabControl1_Firmador.SelectedIndex = 0;
-            tabControl1_Firmador.Size = new Size(821, 431);
-            tabControl1_Firmador.TabIndex = 0;
-            // 
-            // tabPage1_FirmarDocumento
-            // 
-            tabPage1_FirmarDocumento.BackColor = Color.Transparent;
-            tabPage1_FirmarDocumento.Controls.Add(button2_Limpiar);
-            tabPage1_FirmarDocumento.Controls.Add(button2_Firmar);
-            tabPage1_FirmarDocumento.Controls.Add(groupBox1_BuscarDocumento);
-            tabPage1_FirmarDocumento.Controls.Add(groupBox1_DocSelecionados);
-            tabPage1_FirmarDocumento.Controls.Add(groupBox2_Contrasenia);
-            tabPage1_FirmarDocumento.Controls.Add(groupBox1_BuscarCertificado);
-            tabPage1_FirmarDocumento.Location = new Point(4, 24);
-            tabPage1_FirmarDocumento.Name = "tabPage1_FirmarDocumento";
-            tabPage1_FirmarDocumento.Padding = new Padding(3);
-            tabPage1_FirmarDocumento.Size = new Size(813, 403);
-            tabPage1_FirmarDocumento.TabIndex = 0;
-            tabPage1_FirmarDocumento.Text = "Firmar documento";
-            tabPage1_FirmarDocumento.Click += tabPage1_Click;
             // 
             // button2_Limpiar
             // 
-            button2_Limpiar.Location = new Point(732, 343);
+            button2_Limpiar.Location = new Point(723, 376);
             button2_Limpiar.Name = "button2_Limpiar";
             button2_Limpiar.Size = new Size(75, 33);
             button2_Limpiar.TabIndex = 10;
@@ -117,7 +89,7 @@
             // 
             // button2_Firmar
             // 
-            button2_Firmar.Location = new Point(620, 343);
+            button2_Firmar.Location = new Point(604, 376);
             button2_Firmar.Name = "button2_Firmar";
             button2_Firmar.Size = new Size(75, 33);
             button2_Firmar.TabIndex = 9;
@@ -130,9 +102,9 @@
             groupBox1_BuscarDocumento.Controls.Add(label1_DocumentoPdf);
             groupBox1_BuscarDocumento.Controls.Add(label1_ArrastrarDocumento);
             groupBox1_BuscarDocumento.Controls.Add(button1_OpenFileDocumento);
-            groupBox1_BuscarDocumento.Location = new Point(353, 3);
+            groupBox1_BuscarDocumento.Location = new Point(357, 20);
             groupBox1_BuscarDocumento.Name = "groupBox1_BuscarDocumento";
-            groupBox1_BuscarDocumento.Size = new Size(454, 225);
+            groupBox1_BuscarDocumento.Size = new Size(441, 233);
             groupBox1_BuscarDocumento.TabIndex = 8;
             groupBox1_BuscarDocumento.TabStop = false;
             // 
@@ -150,7 +122,7 @@
             label1_ArrastrarDocumento.AutoEllipsis = true;
             label1_ArrastrarDocumento.Location = new Point(15, 149);
             label1_ArrastrarDocumento.Name = "label1_ArrastrarDocumento";
-            label1_ArrastrarDocumento.Size = new Size(433, 20);
+            label1_ArrastrarDocumento.Size = new Size(409, 20);
             label1_ArrastrarDocumento.TabIndex = 0;
             label1_ArrastrarDocumento.Text = "También lo puedes arrastrar aquí";
             label1_ArrastrarDocumento.Click += label1_Tambien_Busca_Doc_Click;
@@ -168,9 +140,9 @@
             // groupBox1_DocSelecionados
             // 
             groupBox1_DocSelecionados.Controls.Add(label1_NumDocumentos);
-            groupBox1_DocSelecionados.Location = new Point(6, 234);
+            groupBox1_DocSelecionados.Location = new Point(19, 270);
             groupBox1_DocSelecionados.Name = "groupBox1_DocSelecionados";
-            groupBox1_DocSelecionados.Size = new Size(801, 85);
+            groupBox1_DocSelecionados.Size = new Size(778, 80);
             groupBox1_DocSelecionados.TabIndex = 7;
             groupBox1_DocSelecionados.TabStop = false;
             groupBox1_DocSelecionados.Enter += groupBox1_Doc_Selecionados_Enter;
@@ -178,7 +150,7 @@
             // label1_NumDocumentos
             // 
             label1_NumDocumentos.AutoSize = true;
-            label1_NumDocumentos.Location = new Point(18, 19);
+            label1_NumDocumentos.Location = new Point(17, 29);
             label1_NumDocumentos.Name = "label1_NumDocumentos";
             label1_NumDocumentos.Size = new Size(206, 15);
             label1_NumDocumentos.TabIndex = 0;
@@ -189,9 +161,9 @@
             groupBox2_Contrasenia.Controls.Add(checkBox1_MostrarContrasenia);
             groupBox2_Contrasenia.Controls.Add(label1_Contrasenia);
             groupBox2_Contrasenia.Controls.Add(textBox1_Contrasenia);
-            groupBox2_Contrasenia.Location = new Point(7, 155);
+            groupBox2_Contrasenia.Location = new Point(19, 169);
             groupBox2_Contrasenia.Name = "groupBox2_Contrasenia";
-            groupBox2_Contrasenia.Size = new Size(328, 73);
+            groupBox2_Contrasenia.Size = new Size(328, 84);
             groupBox2_Contrasenia.TabIndex = 6;
             groupBox2_Contrasenia.TabStop = false;
             // 
@@ -229,7 +201,7 @@
             groupBox1_BuscarCertificado.Controls.Add(label1_CertificadoP12);
             groupBox1_BuscarCertificado.Controls.Add(label1_ArrastrarCertificado);
             groupBox1_BuscarCertificado.Controls.Add(button1_OpenFileCertificado);
-            groupBox1_BuscarCertificado.Location = new Point(6, 6);
+            groupBox1_BuscarCertificado.Location = new Point(18, 20);
             groupBox1_BuscarCertificado.Name = "groupBox1_BuscarCertificado";
             groupBox1_BuscarCertificado.Size = new Size(329, 143);
             groupBox1_BuscarCertificado.TabIndex = 5;
@@ -277,7 +249,7 @@
             panel1_Ventana.Dock = DockStyle.Top;
             panel1_Ventana.Location = new Point(0, 0);
             panel1_Ventana.Name = "panel1_Ventana";
-            panel1_Ventana.Size = new Size(820, 34);
+            panel1_Ventana.Size = new Size(816, 34);
             panel1_Ventana.TabIndex = 1;
             panel1_Ventana.Paint += panel1_Ventana_Paint;
             panel1_Ventana.MouseDown += panel1_MouseDown;
@@ -305,7 +277,7 @@
             // 
             // button2_Minimizar
             // 
-            button2_Minimizar.Location = new Point(690, 0);
+            button2_Minimizar.Location = new Point(684, 0);
             button2_Minimizar.Name = "button2_Minimizar";
             button2_Minimizar.Size = new Size(37, 31);
             button2_Minimizar.TabIndex = 4;
@@ -316,7 +288,7 @@
             // 
             // button2_Maximizar
             // 
-            button2_Maximizar.Location = new Point(736, 0);
+            button2_Maximizar.Location = new Point(727, 0);
             button2_Maximizar.Name = "button2_Maximizar";
             button2_Maximizar.Size = new Size(39, 31);
             button2_Maximizar.TabIndex = 1;
@@ -327,7 +299,7 @@
             // 
             // button2_Close
             // 
-            button2_Close.Location = new Point(781, 0);
+            button2_Close.Location = new Point(776, 0);
             button2_Close.Name = "button2_Close";
             button2_Close.Size = new Size(40, 31);
             button2_Close.TabIndex = 0;
@@ -342,7 +314,7 @@
             menuStrip1_Herramientas.Location = new Point(0, 34);
             menuStrip1_Herramientas.Name = "menuStrip1_Herramientas";
             menuStrip1_Herramientas.RightToLeft = RightToLeft.No;
-            menuStrip1_Herramientas.Size = new Size(820, 24);
+            menuStrip1_Herramientas.Size = new Size(816, 24);
             menuStrip1_Herramientas.TabIndex = 3;
             menuStrip1_Herramientas.Text = "menuStrip1";
             // 
@@ -357,7 +329,7 @@
             // salirToolStripMenuItem
             // 
             salirToolStripMenuItem.Name = "salirToolStripMenuItem";
-            salirToolStripMenuItem.Size = new Size(180, 22);
+            salirToolStripMenuItem.Size = new Size(96, 22);
             salirToolStripMenuItem.Text = "Salir";
             salirToolStripMenuItem.Click += salirToolStripMenuItem_Click;
             // 
@@ -426,20 +398,31 @@
             comoUsarLaAppToolStripMenuItem.Text = "Como usar la App";
             comoUsarLaAppToolStripMenuItem.Click += comoUsarLaAppToolStripMenuItem_Click;
             // 
+            // panel1_Firmador
+            // 
+            panel1_Firmador.Controls.Add(button2_Limpiar);
+            panel1_Firmador.Controls.Add(groupBox1_BuscarCertificado);
+            panel1_Firmador.Controls.Add(button2_Firmar);
+            panel1_Firmador.Controls.Add(groupBox1_BuscarDocumento);
+            panel1_Firmador.Controls.Add(groupBox2_Contrasenia);
+            panel1_Firmador.Controls.Add(groupBox1_DocSelecionados);
+            panel1_Firmador.Location = new Point(0, 57);
+            panel1_Firmador.Name = "panel1_Firmador";
+            panel1_Firmador.Size = new Size(816, 428);
+            panel1_Firmador.TabIndex = 4;
+            // 
             // Home
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(820, 491);
+            ClientSize = new Size(816, 487);
+            Controls.Add(panel1_Firmador);
             Controls.Add(menuStrip1_Herramientas);
             Controls.Add(panel1_Ventana);
-            Controls.Add(tabControl1_Firmador);
             Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "Home";
             StartPosition = FormStartPosition.CenterScreen;
             Load += Home_Load;
-            tabControl1_Firmador.ResumeLayout(false);
-            tabPage1_FirmarDocumento.ResumeLayout(false);
             groupBox1_BuscarDocumento.ResumeLayout(false);
             groupBox1_BuscarDocumento.PerformLayout();
             groupBox1_DocSelecionados.ResumeLayout(false);
@@ -453,14 +436,12 @@
             ((System.ComponentModel.ISupportInitialize)pictureBox1_Icon).EndInit();
             menuStrip1_Herramientas.ResumeLayout(false);
             menuStrip1_Herramientas.PerformLayout();
+            panel1_Firmador.ResumeLayout(false);
             ResumeLayout(false);
             PerformLayout();
         }
 
         #endregion
-
-        private TabControl tabControl1_Firmador;
-        private TabPage tabPage1_FirmarDocumento;
         private Label label1_ArrastrarCertificado;
         private Button button1_OpenFileCertificado;
         private Panel panel2;
@@ -498,5 +479,6 @@
         private ToolTip toolTip1;
         private Syncfusion.Windows.Forms.BannerTextProvider bannerTextProvider1;
         private PictureBox pictureBox1_Icon;
+        private Panel panel1_Firmador;
     }
 }

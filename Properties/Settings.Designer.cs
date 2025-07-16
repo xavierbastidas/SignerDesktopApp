@@ -34,5 +34,30 @@ namespace SignaBSG.Properties {
                 this["TemaActual"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Ngo9BigBOggjHTQxAR8/V1JEaF5cXmRCeUx3Q3xbf1x1ZFRMY15bRnJPIiBoS35Rc0VkWXZfc3dXRGRYV" +
+            "kdzVEFd")]
+        public string Licencia {
+            get {
+                return ((string)(this["Licencia"]));
+            }
+            set {
+                this["Licencia"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("https://localhost:7182/api/Signer/SignDocument")]
+        public string ApiUrl {
+            get {
+                return ((string)(this["ApiUrl"]));
+            }
+            set {
+                this["ApiUrl"] = value;
+            }
+        }
     }
 }

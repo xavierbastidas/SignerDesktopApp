@@ -34,3 +34,6 @@ C:\Desarrollo\Escritorio\SignaBSG\obj\Debug\net8.0-windows\refint\SignaBSG.dll
 C:\Desarrollo\Escritorio\SignaBSG\obj\Debug\net8.0-windows\SignaBSG.pdb
 C:\Desarrollo\Escritorio\SignaBSG\obj\Debug\net8.0-windows\SignaBSG.genruntimeconfig.cache
 C:\Desarrollo\Escritorio\SignaBSG\obj\Debug\net8.0-windows\ref\SignaBSG.dll
+C:\Desarrollo\Escritorio\SignaBSG\bin\Debug\net8.0-windows\Microsoft.AspNetCore.Http.Features.dll
+C:\Desarrollo\Escritorio\SignaBSG\bin\Debug\net8.0-windows\Microsoft.Extensions.Primitives.dll
+C:\Desarrollo\Escritorio\SignaBSG\bin\Debug\net8.0-windows\System.IO.Pipelines.dll

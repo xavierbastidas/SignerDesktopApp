@@ -62,7 +62,7 @@ namespace SignaBSG.Resources.Colors
                 case TextBox txt:
                     txt.BackColor = Color.White;
                     txt.ForeColor = TextoPrincipal;
-                    txt.BorderStyle = BorderStyle.None;
+                    txt.BorderStyle = BorderStyle.Fixed3D;
                     break;
 
                 case GroupBox group:
