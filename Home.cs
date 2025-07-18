@@ -11,10 +11,13 @@ namespace SignaBSG
         private static string documentPdf = "";
         private static string certificateP12 = "";
         private static string version = System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString();
+     
 
         public Home()
         {
+           
             InitializeComponent();
+            
             InicializarFormulario();
             AplicarTema();
         }
@@ -35,7 +38,12 @@ namespace SignaBSG
 
             SetupDragAndDrop(groupBox1_BuscarCertificado, ".p12", GroupBoxCertificado_DragDrop);
             SetupDragAndDrop(groupBox1_BuscarDocumento, ".pdf", GroupBoxDocumento_DragDrop);
+
+
+
         }
+
+
 
         private void AplicarTema()
         {
@@ -103,7 +111,7 @@ namespace SignaBSG
             {
                 certificateP12 = archivoP12;
                 label1_ArrastrarCertificado.Text = archivoP12;
-               
+
             }
             else
             {
@@ -150,15 +158,58 @@ namespace SignaBSG
 
         #region Firma y Validación
 
+
         private void btn_Firmar_Documento(object sender, EventArgs e)
         {
             certificatePassword = textBox1_Contrasenia.Text;
 
-            if (!ValidarCamposParaFirmar()) return;
+            if (!ValidarCamposParaFirmar())
+                return;
 
-            using Signer sig = new(certificateP12, certificatePassword, documentPdf,version);
+            FileInfo fileInfo = new FileInfo(documentPdf);
+
+            if (!fileInfo.Exists)
+            {
+                MessageBox.Show("El documento PDF no existe.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            if (!EsTamanoPermitidoPorLicencia(fileInfo.Length))
+            {
+                MessageBox.Show("El tamaño del PDF no está permitido por las restricciones de licencia.\n\n" +
+                                "Solo se permiten documentos menores a 1MB, mayores a 10MB,\n" +
+                                "o de tamaño exacto como 2MB, 3MB, 4MB o 5MB.",
+                                "Restricción de Licencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            using Signer sig = new(this, certificateP12, certificatePassword, documentPdf, version);
             sig.ShowDialog();
         }
+
+        private bool EsTamanoPermitidoPorLicencia(long fileSizeBytes)
+        {
+            const long minAllowedBytes = 1025 * 1024;  // 1025 KB en bytes (~1 MB)
+            const long maxAllowedBytes = 10 * 1024 * 1024;  // 10 MB en bytes
+
+            if (fileSizeBytes < minAllowedBytes || fileSizeBytes > maxAllowedBytes)
+                return true;  // Permitido si está fuera del rango restringido
+
+            // Si está entre 1 MB y 10 MB, solo permitimos ciertos rangos exactos:
+            long fileSizeMB = fileSizeBytes / (1024 * 1024);
+
+            switch (fileSizeMB)
+            {
+                case 2: // Permitido 1.5 hasta 2MB
+                case 3: // Permitido 2.5 hasta 3MB
+                case 4: // Permitido 3.5 hasta 4MB
+                case 5: // Permitido 4.5 hasta 5MB
+                    return true;
+                default:
+                    return false;
+            }
+        }
+
 
         private bool ValidarCamposParaFirmar()
         {
@@ -174,6 +225,12 @@ namespace SignaBSG
 
         private void button2_Limpiar_Click(object sender, EventArgs e)
         {
+           LimpiarControles();
+        }
+
+        public void  LimpiarControles()
+        {
+
             label1_ArrastrarCertificado.Text = "También lo puedes arrastrar aquí";
             label1_ArrastrarDocumento.Text = "También lo puedes arrastrar aquí";
             label1_NumDocumentos.Text = "0 DOCUMENTO(S) SELECCIONADO(S)";
@@ -269,20 +326,7 @@ namespace SignaBSG
 
         #endregion
 
-        #region Eventos Vacíos
-
-        private void label1_Buscar_Certififcado_Click(object sender, EventArgs e) { }
-        private void textBox1_TextChanged(object sender, EventArgs e) { }
-        private void tabPage1_Click(object sender, EventArgs e) { }
-        private void label1_Tambien_Busca_Doc_Click(object sender, EventArgs e) { }
-        private void groupBox1_Doc_Selecionados_Enter(object sender, EventArgs e) { }
-        private void menuStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e) { }
-        private void archivoToolStripMenuItem_Click(object sender, EventArgs e) { }
-        private void acercaDeLaAppToolStripMenuItem_Click(object sender, EventArgs e) { }
-        private void panel1_Ventana_Paint(object sender, PaintEventArgs e) { }
-        private void pictureBox1_Click(object sender, EventArgs e) { }
-
-        #endregion
+       
     }
 }
 

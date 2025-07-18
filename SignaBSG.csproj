@@ -9,13 +9,22 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Components\" />
-    <Folder Include="Resources\Imagenes\" />
+    <Compile Remove="Resources\Imagenes\**" />
+    <EmbeddedResource Remove="Resources\Imagenes\**" />
+    <None Remove="Resources\Imagenes\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="Resources\Cursors\firmaCursor.cur" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\Cursors\firmaCursor.cur" />
   </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Http.Features" Version="5.0.17" />
-    <PackageReference Include="Syncfusion.PdfViewer.Windows" Version="30.1.39" />
+    <PackageReference Include="Pdfium.Net.SDK" Version="4.100.2704" />
   </ItemGroup>
 
   <ItemGroup>

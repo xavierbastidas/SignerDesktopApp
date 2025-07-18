@@ -1,11 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace SignaBSG.Resources.Colors
+﻿namespace SignaBSG.Resources.Colors
 {
     public static class LigthMode
     {
@@ -58,7 +51,7 @@ namespace SignaBSG.Resources.Colors
                     lbl.ForeColor = TextoPrincipal;
                     lbl.BorderStyle = BorderStyle.None;
                     break;
-               
+
                 case TextBox txt:
                     txt.BackColor = Color.White;
                     txt.ForeColor = TextoPrincipal;

@@ -1,4 +1,5 @@
-﻿namespace SignaBSG
+﻿using SignaBSG.Helpers; 
+namespace SignaBSG
 {
     partial class Signer
     {
@@ -28,16 +29,14 @@
         /// </summary>
         private void InitializeComponent()
         {
-            Syncfusion.Windows.Forms.PdfViewer.MessageBoxSettings messageBoxSettings1 = new Syncfusion.Windows.Forms.PdfViewer.MessageBoxSettings();
-            Syncfusion.Windows.PdfViewer.PdfViewerPrinterSettings pdfViewerPrinterSettings1 = new Syncfusion.Windows.PdfViewer.PdfViewerPrinterSettings();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Signer));
-            Syncfusion.Windows.Forms.PdfViewer.TextSearchSettings textSearchSettings1 = new Syncfusion.Windows.Forms.PdfViewer.TextSearchSettings();
             panel1_Ventana = new Panel();
             pictureBox1_Icon = new PictureBox();
             label1_VersionApp = new Label();
             button1_Close = new Button();
-            pdfViewerControl1 = new Syncfusion.Windows.Forms.PdfViewer.PdfViewerControl();
-            button1 = new Button();
+            pdfToolStripZoomEx1 = new Patagames.Pdf.Net.Controls.WinForms.ToolBars.PdfToolStripZoomEx();
+            pdfViewer1 = new CustomPdfViewer();
+            pdfToolStripPages1 = new Patagames.Pdf.Net.Controls.WinForms.ToolBars.PdfToolStripPages();
+            button1_EstamparFirma = new Button();
             panel1_Ventana.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1_Icon).BeginInit();
             SuspendLayout();
@@ -51,13 +50,13 @@
             panel1_Ventana.Dock = DockStyle.Top;
             panel1_Ventana.Location = new Point(0, 0);
             panel1_Ventana.Name = "panel1_Ventana";
-            panel1_Ventana.Size = new Size(891, 37);
+            panel1_Ventana.Size = new Size(729, 34);
             panel1_Ventana.TabIndex = 2;
             panel1_Ventana.MouseDown += panel1_Ventana_MouseDown;
             // 
             // pictureBox1_Icon
             // 
-            pictureBox1_Icon.Image = Properties.Resources.image;
+            pictureBox1_Icon.Image = Properties.Resources.sgb;
             pictureBox1_Icon.Location = new Point(4, 8);
             pictureBox1_Icon.Name = "pictureBox1_Icon";
             pictureBox1_Icon.Size = new Size(39, 23);
@@ -77,73 +76,97 @@
             // 
             // button1_Close
             // 
-            button1_Close.Location = new Point(686, 3);
+            button1_Close.Location = new Point(690, 0);
             button1_Close.Name = "button1_Close";
-            button1_Close.Size = new Size(40, 31);
+            button1_Close.Size = new Size(37, 31);
             button1_Close.TabIndex = 0;
             button1_Close.Text = "✕";
             button1_Close.UseVisualStyleBackColor = true;
-            button1_Close.Click += button1_Click;
+            button1_Close.Click += buttonCerrar_Click;
             // 
-            // pdfViewerControl1
+            // pdfToolStripZoomEx1
             // 
-            pdfViewerControl1.CursorMode = Syncfusion.Windows.Forms.PdfViewer.PdfViewerCursorMode.SelectTool;
-            pdfViewerControl1.EnableContextMenu = true;
-            pdfViewerControl1.EnableNotificationBar = true;
-            pdfViewerControl1.HorizontalScrollOffset = 0;
-            pdfViewerControl1.IsBookmarkEnabled = true;
-            pdfViewerControl1.IsTextSearchEnabled = true;
-            pdfViewerControl1.IsTextSelectionEnabled = true;
-            pdfViewerControl1.Location = new Point(0, 33);
-            messageBoxSettings1.EnableNotification = true;
-            pdfViewerControl1.MessageBoxSettings = messageBoxSettings1;
-            pdfViewerControl1.MinimumZoomPercentage = 50;
-            pdfViewerControl1.Name = "pdfViewerControl1";
-            pdfViewerControl1.PageBorderThickness = 1;
-            pdfViewerPrinterSettings1.Copies = 1;
-            pdfViewerPrinterSettings1.PageOrientation = Syncfusion.Windows.PdfViewer.PdfViewerPrintOrientation.Auto;
-            pdfViewerPrinterSettings1.PageSize = Syncfusion.Windows.PdfViewer.PdfViewerPrintSize.ActualSize;
-            pdfViewerPrinterSettings1.PrintLocation = (PointF)resources.GetObject("pdfViewerPrinterSettings1.PrintLocation");
-            pdfViewerPrinterSettings1.ShowPrintStatusDialog = true;
-            pdfViewerControl1.PrinterSettings = pdfViewerPrinterSettings1;
-            pdfViewerControl1.ReferencePath = null;
-            pdfViewerControl1.ScrollDisplacementValue = 0;
-            pdfViewerControl1.ShowHorizontalScrollBar = true;
-            pdfViewerControl1.ShowToolBar = true;
-            pdfViewerControl1.ShowVerticalScrollBar = true;
-            pdfViewerControl1.Size = new Size(726, 767);
-            pdfViewerControl1.SpaceBetweenPages = 8;
-            pdfViewerControl1.TabIndex = 3;
-            pdfViewerControl1.Text = "pdfViewerControl1";
-            textSearchSettings1.CurrentInstanceColor = Color.FromArgb(127, 255, 171, 64);
-            textSearchSettings1.HighlightAllInstance = true;
-            textSearchSettings1.OtherInstanceColor = Color.FromArgb(127, 254, 255, 0);
-            pdfViewerControl1.TextSearchSettings = textSearchSettings1;
-            pdfViewerControl1.ThemeName = "Office2016Colorful";
-            pdfViewerControl1.VerticalScrollOffset = 0;
-            pdfViewerControl1.VisualStyle = Syncfusion.Windows.Forms.PdfViewer.VisualStyle.Office2016Colorful;
-            pdfViewerControl1.ZoomMode = Syncfusion.Windows.Forms.PdfViewer.ZoomMode.Default;
+            pdfToolStripZoomEx1.Dock = DockStyle.None;
+            pdfToolStripZoomEx1.Location = new Point(0, 34);
+            pdfToolStripZoomEx1.Name = "pdfToolStripZoomEx1";
+            pdfToolStripZoomEx1.PdfViewer = pdfViewer1;
+            pdfToolStripZoomEx1.Size = new Size(214, 25);
+            pdfToolStripZoomEx1.TabIndex = 3;
+            pdfToolStripZoomEx1.Text = "pdfToolStripZoomEx1";
+            pdfToolStripZoomEx1.ZoomLevel = new float[]
+    {
+    100F,
+    50F,
+    80F,
+    150F
+    };
             // 
-            // button1
+            // pdfViewer1
             // 
-            button1.Location = new Point(761, 113);
-            button1.Name = "button1";
-            button1.Size = new Size(75, 23);
-            button1.TabIndex = 4;
-            button1.Text = "button1";
-            button1.UseVisualStyleBackColor = true;
-            button1.Click += button1_Click_1;
+            pdfViewer1.BackColor = SystemColors.ControlDark;
+            pdfViewer1.CurrentIndex = -1;
+            pdfViewer1.CurrentPageHighlightColor = Color.FromArgb(170, 70, 130, 180);
+            pdfViewer1.CursorPersonalizado = null;
+            pdfViewer1.Document = null;
+            pdfViewer1.FormHighlightColor = Color.Transparent;
+            pdfViewer1.FormsBlendMode = Patagames.Pdf.Enums.BlendTypes.FXDIB_BLEND_MULTIPLY;
+            pdfViewer1.LoadingIconText = "Loading...";
+            pdfViewer1.Location = new Point(2, 62);
+            pdfViewer1.Margin = new Padding(4, 3, 4, 3);
+            pdfViewer1.MouseMode = Patagames.Pdf.Net.Controls.WinForms.MouseModes.Default;
+            pdfViewer1.Name = "pdfViewer1";
+            pdfViewer1.OptimizedLoadThreshold = 1000;
+            pdfViewer1.Padding = new Padding(12, 12, 12, 12);
+            pdfViewer1.PageAlign = ContentAlignment.MiddleCenter;
+            pdfViewer1.PageAutoDispose = true;
+            pdfViewer1.PageBackColor = Color.White;
+            pdfViewer1.PageBorderColor = Color.Black;
+            pdfViewer1.PageMargin = new Padding(10);
+            pdfViewer1.PageSeparatorColor = Color.Gray;
+            pdfViewer1.RenderFlags = Patagames.Pdf.Enums.RenderFlags.FPDF_LCD_TEXT | Patagames.Pdf.Enums.RenderFlags.FPDF_NO_CATCH;
+            pdfViewer1.ShowCurrentPageHighlight = true;
+            pdfViewer1.ShowLoadingIcon = true;
+            pdfViewer1.ShowPageSeparator = true;
+            pdfViewer1.Size = new Size(725, 665);
+            pdfViewer1.SizeMode = Patagames.Pdf.Net.Controls.WinForms.SizeModes.Zoom;
+            pdfViewer1.TabIndex = 5;
+            pdfViewer1.TextSelectColor = Color.FromArgb(70, 70, 130, 180);
+            pdfViewer1.TilesCount = 2;
+            pdfViewer1.UseProgressiveRender = true;
+            pdfViewer1.ViewMode = Patagames.Pdf.Net.Controls.WinForms.ViewModes.Vertical;
+            pdfViewer1.Zoom = 0F;
+            // 
+            // pdfToolStripPages1
+            // 
+            pdfToolStripPages1.Dock = DockStyle.None;
+            pdfToolStripPages1.Location = new Point(511, 37);
+            pdfToolStripPages1.Name = "pdfToolStripPages1";
+            pdfToolStripPages1.PdfViewer = pdfViewer1;
+            pdfToolStripPages1.Size = new Size(220, 27);
+            pdfToolStripPages1.TabIndex = 4;
+            pdfToolStripPages1.Text = "pdfToolStripPages1";
+            // 
+            // button1_EstamparFirma
+            // 
+            button1_EstamparFirma.Location = new Point(310, 34);
+            button1_EstamparFirma.Name = "button1_EstamparFirma";
+            button1_EstamparFirma.Size = new Size(122, 30);
+            button1_EstamparFirma.TabIndex = 6;
+            button1_EstamparFirma.Text = "Estampar Firma";
+            button1_EstamparFirma.UseVisualStyleBackColor = true;
+            button1_EstamparFirma.Click += button1_Click;
             // 
             // Signer
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(891, 798);
-            Controls.Add(button1);
-            Controls.Add(pdfViewerControl1);
+            ClientSize = new Size(729, 729);
+            Controls.Add(button1_EstamparFirma);
+            Controls.Add(pdfViewer1);
+            Controls.Add(pdfToolStripPages1);
+            Controls.Add(pdfToolStripZoomEx1);
             Controls.Add(panel1_Ventana);
             FormBorderStyle = FormBorderStyle.FixedDialog;
-            Icon = (Icon)resources.GetObject("$this.Icon");
             MaximizeBox = false;
             MinimizeBox = false;
             Name = "Signer";
@@ -162,7 +185,9 @@
         private PictureBox pictureBox1_Icon;
         private Label label1_VersionApp;
         private Button button1_Close;
-        private Syncfusion.Windows.Forms.PdfViewer.PdfViewerControl pdfViewerControl1;
-        private Button button1;
+        private Patagames.Pdf.Net.Controls.WinForms.ToolBars.PdfToolStripZoomEx pdfToolStripZoomEx1;
+        private Patagames.Pdf.Net.Controls.WinForms.ToolBars.PdfToolStripPages pdfToolStripPages1;
+        private CustomPdfViewer pdfViewer1;
+        private Button button1_EstamparFirma;
     }
 }

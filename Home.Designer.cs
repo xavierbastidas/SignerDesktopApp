@@ -52,29 +52,27 @@
             button2_Minimizar = new Button();
             button2_Maximizar = new Button();
             button2_Close = new Button();
-            menuStrip1_Herramientas = new MenuStrip();
-            archivoToolStripMenuItem = new ToolStripMenuItem();
+            toolTip1 = new ToolTip(components);
+            panel1_Firmador = new Panel();
+            menuStrip1 = new MenuStrip();
+            configuracionToolStripMenuItem = new ToolStripMenuItem();
             salirToolStripMenuItem = new ToolStripMenuItem();
             configuraciónToolStripMenuItem = new ToolStripMenuItem();
             cambiarTemaToolStripMenuItem = new ToolStripMenuItem();
             temaOscuroToolStripMenuItem = new ToolStripMenuItem();
             temaClaroToolStripMenuItem = new ToolStripMenuItem();
-            porDefectoToolStripMenuItem = new ToolStripMenuItem();
-            ayudaToolStripMenuItem = new ToolStripMenuItem();
-            acercaDeLaAppToolStripMenuItem = new ToolStripMenuItem();
+            temaSistemaToolStripMenuItem = new ToolStripMenuItem();
+            acercaDeToolStripMenuItem = new ToolStripMenuItem();
             versiónToolStripMenuItem = new ToolStripMenuItem();
-            comoUsarLaAppToolStripMenuItem = new ToolStripMenuItem();
-            toolTip1 = new ToolTip(components);
-            bannerTextProvider1 = new Syncfusion.Windows.Forms.BannerTextProvider(components);
-            panel1_Firmador = new Panel();
+            ayudaToolStripMenuItem = new ToolStripMenuItem();
             groupBox1_BuscarDocumento.SuspendLayout();
             groupBox1_DocSelecionados.SuspendLayout();
             groupBox2_Contrasenia.SuspendLayout();
             groupBox1_BuscarCertificado.SuspendLayout();
             panel1_Ventana.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1_Icon).BeginInit();
-            menuStrip1_Herramientas.SuspendLayout();
             panel1_Firmador.SuspendLayout();
+            menuStrip1.SuspendLayout();
             SuspendLayout();
             // 
             // button2_Limpiar
@@ -125,7 +123,6 @@
             label1_ArrastrarDocumento.Size = new Size(409, 20);
             label1_ArrastrarDocumento.TabIndex = 0;
             label1_ArrastrarDocumento.Text = "También lo puedes arrastrar aquí";
-            label1_ArrastrarDocumento.Click += label1_Tambien_Busca_Doc_Click;
             // 
             // button1_OpenFileDocumento
             // 
@@ -145,7 +142,6 @@
             groupBox1_DocSelecionados.Size = new Size(778, 80);
             groupBox1_DocSelecionados.TabIndex = 7;
             groupBox1_DocSelecionados.TabStop = false;
-            groupBox1_DocSelecionados.Enter += groupBox1_Doc_Selecionados_Enter;
             // 
             // label1_NumDocumentos
             // 
@@ -194,7 +190,6 @@
             textBox1_Contrasenia.Size = new Size(148, 23);
             textBox1_Contrasenia.TabIndex = 2;
             textBox1_Contrasenia.UseSystemPasswordChar = true;
-            textBox1_Contrasenia.TextChanged += textBox1_TextChanged;
             // 
             // groupBox1_BuscarCertificado
             // 
@@ -226,7 +221,6 @@
             label1_ArrastrarCertificado.Size = new Size(306, 20);
             label1_ArrastrarCertificado.TabIndex = 0;
             label1_ArrastrarCertificado.Text = "También lo puedes arrastrar aquí";
-            label1_ArrastrarCertificado.Click += label1_Buscar_Certififcado_Click;
             // 
             // button1_OpenFileCertificado
             // 
@@ -251,19 +245,17 @@
             panel1_Ventana.Name = "panel1_Ventana";
             panel1_Ventana.Size = new Size(816, 34);
             panel1_Ventana.TabIndex = 1;
-            panel1_Ventana.Paint += panel1_Ventana_Paint;
             panel1_Ventana.MouseDown += panel1_MouseDown;
             // 
             // pictureBox1_Icon
             // 
-            pictureBox1_Icon.Image = Properties.Resources.image;
+            pictureBox1_Icon.Image = Properties.Resources.sgb;
             pictureBox1_Icon.Location = new Point(4, 8);
             pictureBox1_Icon.Name = "pictureBox1_Icon";
             pictureBox1_Icon.Size = new Size(39, 23);
             pictureBox1_Icon.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox1_Icon.TabIndex = 6;
             pictureBox1_Icon.TabStop = false;
-            pictureBox1_Icon.Click += pictureBox1_Click;
             // 
             // label1_VersionApp
             // 
@@ -277,7 +269,7 @@
             // 
             // button2_Minimizar
             // 
-            button2_Minimizar.Location = new Point(684, 0);
+            button2_Minimizar.Location = new Point(688, 0);
             button2_Minimizar.Name = "button2_Minimizar";
             button2_Minimizar.Size = new Size(37, 31);
             button2_Minimizar.TabIndex = 4;
@@ -288,7 +280,7 @@
             // 
             // button2_Maximizar
             // 
-            button2_Maximizar.Location = new Point(727, 0);
+            button2_Maximizar.Location = new Point(731, 0);
             button2_Maximizar.Name = "button2_Maximizar";
             button2_Maximizar.Size = new Size(39, 31);
             button2_Maximizar.TabIndex = 1;
@@ -308,23 +300,34 @@
             button2_Close.UseVisualStyleBackColor = true;
             button2_Close.Click += button2_Close_Click;
             // 
-            // menuStrip1_Herramientas
+            // panel1_Firmador
             // 
-            menuStrip1_Herramientas.Items.AddRange(new ToolStripItem[] { archivoToolStripMenuItem, configuraciónToolStripMenuItem, ayudaToolStripMenuItem });
-            menuStrip1_Herramientas.Location = new Point(0, 34);
-            menuStrip1_Herramientas.Name = "menuStrip1_Herramientas";
-            menuStrip1_Herramientas.RightToLeft = RightToLeft.No;
-            menuStrip1_Herramientas.Size = new Size(816, 24);
-            menuStrip1_Herramientas.TabIndex = 3;
-            menuStrip1_Herramientas.Text = "menuStrip1";
+            panel1_Firmador.Controls.Add(button2_Limpiar);
+            panel1_Firmador.Controls.Add(groupBox1_BuscarCertificado);
+            panel1_Firmador.Controls.Add(button2_Firmar);
+            panel1_Firmador.Controls.Add(groupBox1_BuscarDocumento);
+            panel1_Firmador.Controls.Add(groupBox2_Contrasenia);
+            panel1_Firmador.Controls.Add(groupBox1_DocSelecionados);
+            panel1_Firmador.Location = new Point(0, 57);
+            panel1_Firmador.Name = "panel1_Firmador";
+            panel1_Firmador.Size = new Size(816, 428);
+            panel1_Firmador.TabIndex = 4;
             // 
-            // archivoToolStripMenuItem
+            // menuStrip1
             // 
-            archivoToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { salirToolStripMenuItem });
-            archivoToolStripMenuItem.Name = "archivoToolStripMenuItem";
-            archivoToolStripMenuItem.Size = new Size(60, 20);
-            archivoToolStripMenuItem.Text = "Archivo";
-            archivoToolStripMenuItem.TextAlign = ContentAlignment.MiddleLeft;
+            menuStrip1.Items.AddRange(new ToolStripItem[] { configuracionToolStripMenuItem, configuraciónToolStripMenuItem, acercaDeToolStripMenuItem });
+            menuStrip1.Location = new Point(0, 34);
+            menuStrip1.Name = "menuStrip1";
+            menuStrip1.Size = new Size(816, 24);
+            menuStrip1.TabIndex = 5;
+            menuStrip1.Text = "menuStrip1";
+            // 
+            // configuracionToolStripMenuItem
+            // 
+            configuracionToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { salirToolStripMenuItem });
+            configuracionToolStripMenuItem.Name = "configuracionToolStripMenuItem";
+            configuracionToolStripMenuItem.Size = new Size(52, 20);
+            configuracionToolStripMenuItem.Text = "Home";
             // 
             // salirToolStripMenuItem
             // 
@@ -339,77 +342,55 @@
             configuraciónToolStripMenuItem.Name = "configuraciónToolStripMenuItem";
             configuraciónToolStripMenuItem.Size = new Size(95, 20);
             configuraciónToolStripMenuItem.Text = "Configuración";
-            configuraciónToolStripMenuItem.TextAlign = ContentAlignment.MiddleLeft;
             // 
             // cambiarTemaToolStripMenuItem
             // 
-            cambiarTemaToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { temaOscuroToolStripMenuItem, temaClaroToolStripMenuItem, porDefectoToolStripMenuItem });
+            cambiarTemaToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { temaOscuroToolStripMenuItem, temaClaroToolStripMenuItem, temaSistemaToolStripMenuItem });
             cambiarTemaToolStripMenuItem.Name = "cambiarTemaToolStripMenuItem";
-            cambiarTemaToolStripMenuItem.Size = new Size(150, 22);
-            cambiarTemaToolStripMenuItem.Text = "Cambiar Tema";
+            cambiarTemaToolStripMenuItem.Size = new Size(147, 22);
+            cambiarTemaToolStripMenuItem.Text = "CambiarTema";
             // 
             // temaOscuroToolStripMenuItem
             // 
             temaOscuroToolStripMenuItem.Name = "temaOscuroToolStripMenuItem";
-            temaOscuroToolStripMenuItem.Size = new Size(164, 22);
+            temaOscuroToolStripMenuItem.Size = new Size(145, 22);
             temaOscuroToolStripMenuItem.Text = "Tema oscuro";
             temaOscuroToolStripMenuItem.Click += temaOscuroToolStripMenuItem_Click;
             // 
             // temaClaroToolStripMenuItem
             // 
             temaClaroToolStripMenuItem.Name = "temaClaroToolStripMenuItem";
-            temaClaroToolStripMenuItem.Size = new Size(164, 22);
+            temaClaroToolStripMenuItem.Size = new Size(145, 22);
             temaClaroToolStripMenuItem.Text = "Tema claro";
             temaClaroToolStripMenuItem.Click += temaClaroToolStripMenuItem_Click;
             // 
-            // porDefectoToolStripMenuItem
+            // temaSistemaToolStripMenuItem
             // 
-            porDefectoToolStripMenuItem.Name = "porDefectoToolStripMenuItem";
-            porDefectoToolStripMenuItem.Size = new Size(164, 22);
-            porDefectoToolStripMenuItem.Text = "Tema del sistema";
-            porDefectoToolStripMenuItem.Click += porDefectoToolStripMenuItem_Click;
+            temaSistemaToolStripMenuItem.Name = "temaSistemaToolStripMenuItem";
+            temaSistemaToolStripMenuItem.Size = new Size(145, 22);
+            temaSistemaToolStripMenuItem.Text = "Tema sistema";
+            temaSistemaToolStripMenuItem.Click += porDefectoToolStripMenuItem_Click;
             // 
-            // ayudaToolStripMenuItem
+            // acercaDeToolStripMenuItem
             // 
-            ayudaToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { acercaDeLaAppToolStripMenuItem });
-            ayudaToolStripMenuItem.Name = "ayudaToolStripMenuItem";
-            ayudaToolStripMenuItem.Size = new Size(53, 20);
-            ayudaToolStripMenuItem.Text = "Ayuda";
-            ayudaToolStripMenuItem.TextAlign = ContentAlignment.MiddleLeft;
-            // 
-            // acercaDeLaAppToolStripMenuItem
-            // 
-            acercaDeLaAppToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { versiónToolStripMenuItem, comoUsarLaAppToolStripMenuItem });
-            acercaDeLaAppToolStripMenuItem.Name = "acercaDeLaAppToolStripMenuItem";
-            acercaDeLaAppToolStripMenuItem.Size = new Size(163, 22);
-            acercaDeLaAppToolStripMenuItem.Text = "Acerca de la App";
+            acercaDeToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { versiónToolStripMenuItem, ayudaToolStripMenuItem });
+            acercaDeToolStripMenuItem.Name = "acercaDeToolStripMenuItem";
+            acercaDeToolStripMenuItem.Size = new Size(74, 20);
+            acercaDeToolStripMenuItem.Text = "Acerca de ";
             // 
             // versiónToolStripMenuItem
             // 
             versiónToolStripMenuItem.Name = "versiónToolStripMenuItem";
-            versiónToolStripMenuItem.Size = new Size(169, 22);
+            versiónToolStripMenuItem.Size = new Size(180, 22);
             versiónToolStripMenuItem.Text = "Versión";
             versiónToolStripMenuItem.Click += versiónToolStripMenuItem_Click;
             // 
-            // comoUsarLaAppToolStripMenuItem
+            // ayudaToolStripMenuItem
             // 
-            comoUsarLaAppToolStripMenuItem.Name = "comoUsarLaAppToolStripMenuItem";
-            comoUsarLaAppToolStripMenuItem.Size = new Size(169, 22);
-            comoUsarLaAppToolStripMenuItem.Text = "Como usar la App";
-            comoUsarLaAppToolStripMenuItem.Click += comoUsarLaAppToolStripMenuItem_Click;
-            // 
-            // panel1_Firmador
-            // 
-            panel1_Firmador.Controls.Add(button2_Limpiar);
-            panel1_Firmador.Controls.Add(groupBox1_BuscarCertificado);
-            panel1_Firmador.Controls.Add(button2_Firmar);
-            panel1_Firmador.Controls.Add(groupBox1_BuscarDocumento);
-            panel1_Firmador.Controls.Add(groupBox2_Contrasenia);
-            panel1_Firmador.Controls.Add(groupBox1_DocSelecionados);
-            panel1_Firmador.Location = new Point(0, 57);
-            panel1_Firmador.Name = "panel1_Firmador";
-            panel1_Firmador.Size = new Size(816, 428);
-            panel1_Firmador.TabIndex = 4;
+            ayudaToolStripMenuItem.Name = "ayudaToolStripMenuItem";
+            ayudaToolStripMenuItem.Size = new Size(180, 22);
+            ayudaToolStripMenuItem.Text = "Ayuda";
+            ayudaToolStripMenuItem.Click += comoUsarLaAppToolStripMenuItem_Click;
             // 
             // Home
             // 
@@ -417,9 +398,10 @@
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(816, 487);
             Controls.Add(panel1_Firmador);
-            Controls.Add(menuStrip1_Herramientas);
+            Controls.Add(menuStrip1);
             Controls.Add(panel1_Ventana);
             Icon = (Icon)resources.GetObject("$this.Icon");
+            MainMenuStrip = menuStrip1;
             Name = "Home";
             StartPosition = FormStartPosition.CenterScreen;
             Load += Home_Load;
@@ -434,9 +416,9 @@
             panel1_Ventana.ResumeLayout(false);
             panel1_Ventana.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1_Icon).EndInit();
-            menuStrip1_Herramientas.ResumeLayout(false);
-            menuStrip1_Herramientas.PerformLayout();
             panel1_Firmador.ResumeLayout(false);
+            menuStrip1.ResumeLayout(false);
+            menuStrip1.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -460,25 +442,23 @@
         private Label label1_DocumentoPdf;
         private CheckBox checkBox1_MostrarContrasenia;
         private Panel panel1_Ventana;
-        private MenuStrip menuStrip1_Herramientas;
-        private ToolStripMenuItem archivoToolStripMenuItem;
-        private ToolStripMenuItem salirToolStripMenuItem;
-        private ToolStripMenuItem configuraciónToolStripMenuItem;
-        private ToolStripMenuItem cambiarTemaToolStripMenuItem;
-        private ToolStripMenuItem temaOscuroToolStripMenuItem;
-        private ToolStripMenuItem temaClaroToolStripMenuItem;
-        private ToolStripMenuItem porDefectoToolStripMenuItem;
-        private ToolStripMenuItem ayudaToolStripMenuItem;
-        private ToolStripMenuItem acercaDeLaAppToolStripMenuItem;
-        private ToolStripMenuItem versiónToolStripMenuItem;
-        private ToolStripMenuItem comoUsarLaAppToolStripMenuItem;
         private Button button2_Close;
         private Button button2_Minimizar;
         private Button button2_Maximizar;
         private Label label1_VersionApp;
         private ToolTip toolTip1;
-        private Syncfusion.Windows.Forms.BannerTextProvider bannerTextProvider1;
         private PictureBox pictureBox1_Icon;
         private Panel panel1_Firmador;
+        private MenuStrip menuStrip1;
+        private ToolStripMenuItem configuracionToolStripMenuItem;
+        private ToolStripMenuItem salirToolStripMenuItem;
+        private ToolStripMenuItem configuraciónToolStripMenuItem;
+        private ToolStripMenuItem cambiarTemaToolStripMenuItem;
+        private ToolStripMenuItem temaOscuroToolStripMenuItem;
+        private ToolStripMenuItem temaClaroToolStripMenuItem;
+        private ToolStripMenuItem temaSistemaToolStripMenuItem;
+        private ToolStripMenuItem acercaDeToolStripMenuItem;
+        private ToolStripMenuItem versiónToolStripMenuItem;
+        private ToolStripMenuItem ayudaToolStripMenuItem;
     }
 }

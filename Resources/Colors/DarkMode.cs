@@ -1,10 +1,4 @@
-﻿
-using System;
-using System.Drawing;
-using System.Drawing.Drawing2D;
-using System.Windows.Forms;
-
-public static class DarkMode
+﻿public static class DarkMode
 {
     // 🎨 Colores estilo Bootstrap 5 Dark
     public static Color FondoFormulario = ColorTranslator.FromHtml("#212529");
@@ -56,7 +50,7 @@ public static class DarkMode
                 break;
 
             case TextBox txt:
-                txt.BackColor = Color.FromArgb(64, 64, 64); 
+                txt.BackColor = Color.FromArgb(64, 64, 64);
                 txt.ForeColor = TextoPrincipal;
                 txt.BorderStyle = BorderStyle.Fixed3D;
                 txt.Font = new Font("Segoe UI", 10F);
@@ -83,7 +77,7 @@ public static class DarkMode
                 tabs.SizeMode = TabSizeMode.Fixed;
                 tabs.Multiline = false;
 
-               // tabs.SetStyle(ControlStyles.UserPaint, true); // importante
+                // tabs.SetStyle(ControlStyles.UserPaint, true); // importante
 
                 tabs.DrawItem += (s, e) =>
                 {
@@ -211,7 +205,7 @@ public static class DarkMode
         }
     }
 
-  
+
 
     private class EstiloMenu : ProfessionalColorTable
     {
