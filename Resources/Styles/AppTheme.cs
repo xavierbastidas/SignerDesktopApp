@@ -1,20 +1,18 @@
 ﻿using Microsoft.Win32;
 
-namespace SignaBSG.Resources.Estilos
+namespace SignaBSG.Resources.Styles
 {
-    // Enum que representa los posibles temas
-    public enum Tema
+    public enum Theme
     {
-        Oscuro,
-        Claro,
-        Sistema
+        Light,
+        Dark,
+        System
     }
 
-    // Clase utilitaria para temas
-    public static class TemaApp
+    public static class AppTheme
     {
-        // Devuelve el tema del sistema detectado desde el registro
-        public static Tema DetectarTemaDelSistema()
+        // Detects the current system theme (Light or Dark) by reading Windows registry
+        public static Theme DetectSystemTheme()
         {
             try
             {
@@ -25,19 +23,18 @@ namespace SignaBSG.Resources.Estilos
                     {
                         object value = key.GetValue("AppsUseLightTheme");
                         if (value != null && Convert.ToInt32(value) == 0)
-                            return Tema.Oscuro;
+                            return Theme.Dark;
                         else
-                            return Tema.Claro;
+                            return Theme.Light;
                     }
                 }
             }
             catch
             {
-                return Tema.Claro;
-                // Si falla la lectura, retorna tema claro como predeterminado
+                return Theme.Light;
             }
 
-            return Tema.Claro;
+            return Theme.Light;
         }
     }
 }

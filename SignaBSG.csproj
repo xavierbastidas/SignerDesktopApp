@@ -15,11 +15,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Remove="Resources\Cursors\firmaCursor.cur" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <EmbeddedResource Include="Resources\Cursors\firmaCursor.cur" />
+    <EmbeddedResource Include="Resources\Cursors\signatureCursor.cur" />
   </ItemGroup>
 
   <ItemGroup>

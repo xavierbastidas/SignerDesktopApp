@@ -369,7 +369,7 @@
             temaSistemaToolStripMenuItem.Name = "temaSistemaToolStripMenuItem";
             temaSistemaToolStripMenuItem.Size = new Size(145, 22);
             temaSistemaToolStripMenuItem.Text = "Tema sistema";
-            temaSistemaToolStripMenuItem.Click += porDefectoToolStripMenuItem_Click;
+            temaSistemaToolStripMenuItem.Click += temaSistemaToolStripMenuItem_Click;
             // 
             // acercaDeToolStripMenuItem
             // 

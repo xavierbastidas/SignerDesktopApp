@@ -50,7 +50,7 @@ namespace SignaBSG
             panel1_Ventana.Dock = DockStyle.Top;
             panel1_Ventana.Location = new Point(0, 0);
             panel1_Ventana.Name = "panel1_Ventana";
-            panel1_Ventana.Size = new Size(729, 34);
+            panel1_Ventana.Size = new Size(802, 34);
             panel1_Ventana.TabIndex = 2;
             panel1_Ventana.MouseDown += panel1_Ventana_MouseDown;
             // 
@@ -76,7 +76,7 @@ namespace SignaBSG
             // 
             // button1_Close
             // 
-            button1_Close.Location = new Point(690, 0);
+            button1_Close.Location = new Point(765, 0);
             button1_Close.Name = "button1_Close";
             button1_Close.Size = new Size(37, 31);
             button1_Close.TabIndex = 0;
@@ -111,7 +111,7 @@ namespace SignaBSG
             pdfViewer1.FormHighlightColor = Color.Transparent;
             pdfViewer1.FormsBlendMode = Patagames.Pdf.Enums.BlendTypes.FXDIB_BLEND_MULTIPLY;
             pdfViewer1.LoadingIconText = "Loading...";
-            pdfViewer1.Location = new Point(2, 62);
+            pdfViewer1.Location = new Point(2, 67);
             pdfViewer1.Margin = new Padding(4, 3, 4, 3);
             pdfViewer1.MouseMode = Patagames.Pdf.Net.Controls.WinForms.MouseModes.Default;
             pdfViewer1.Name = "pdfViewer1";
@@ -127,7 +127,7 @@ namespace SignaBSG
             pdfViewer1.ShowCurrentPageHighlight = true;
             pdfViewer1.ShowLoadingIcon = true;
             pdfViewer1.ShowPageSeparator = true;
-            pdfViewer1.Size = new Size(725, 665);
+            pdfViewer1.Size = new Size(800, 670);
             pdfViewer1.SizeMode = Patagames.Pdf.Net.Controls.WinForms.SizeModes.Zoom;
             pdfViewer1.TabIndex = 5;
             pdfViewer1.TextSelectColor = Color.FromArgb(70, 70, 130, 180);
@@ -139,16 +139,17 @@ namespace SignaBSG
             // pdfToolStripPages1
             // 
             pdfToolStripPages1.Dock = DockStyle.None;
-            pdfToolStripPages1.Location = new Point(511, 37);
+            pdfToolStripPages1.Location = new Point(590, 37);
             pdfToolStripPages1.Name = "pdfToolStripPages1";
             pdfToolStripPages1.PdfViewer = pdfViewer1;
             pdfToolStripPages1.Size = new Size(220, 27);
             pdfToolStripPages1.TabIndex = 4;
             pdfToolStripPages1.Text = "pdfToolStripPages1";
+            pdfToolStripPages1.ItemClicked += pdfToolStripPages1_ItemClicked;
             // 
             // button1_EstamparFirma
             // 
-            button1_EstamparFirma.Location = new Point(310, 34);
+            button1_EstamparFirma.Location = new Point(330, 34);
             button1_EstamparFirma.Name = "button1_EstamparFirma";
             button1_EstamparFirma.Size = new Size(122, 30);
             button1_EstamparFirma.TabIndex = 6;
@@ -160,7 +161,7 @@ namespace SignaBSG
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(729, 729);
+            ClientSize = new Size(802, 736);
             Controls.Add(button1_EstamparFirma);
             Controls.Add(pdfViewer1);
             Controls.Add(pdfToolStripPages1);

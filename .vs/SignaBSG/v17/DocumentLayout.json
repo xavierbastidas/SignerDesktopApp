@@ -3,12 +3,8 @@
   "WorkspaceRootPath": "C:\\Desarrollo\\Escritorio\\SignaBSG\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{AE9A1F3F-A4FF-450B-8F58-97A8E87AC4F7}|SignaBSG.csproj|C:\\Desarrollo\\Escritorio\\SignaBSG\\signer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{AE9A1F3F-A4FF-450B-8F58-97A8E87AC4F7}|SignaBSG.csproj|solutionrelative:signer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{AE9A1F3F-A4FF-450B-8F58-97A8E87AC4F7}|SignaBSG.csproj|c:\\desarrollo\\escritorio\\signabsg\\home.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{AE9A1F3F-A4FF-450B-8F58-97A8E87AC4F7}|SignaBSG.csproj|solutionrelative:home.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+      "AbsoluteMoniker": "D:0:0:{AE9A1F3F-A4FF-450B-8F58-97A8E87AC4F7}|SignaBSG.csproj|c:\\desarrollo\\escritorio\\signabsg\\signer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{AE9A1F3F-A4FF-450B-8F58-97A8E87AC4F7}|SignaBSG.csproj|solutionrelative:signer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -23,26 +19,15 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "Signer.cs [Dise\u00F1o]",
+              "Title": "Signer.cs",
               "DocumentMoniker": "C:\\Desarrollo\\Escritorio\\SignaBSG\\Signer.cs",
               "RelativeDocumentMoniker": "Signer.cs",
-              "ToolTip": "C:\\Desarrollo\\Escritorio\\SignaBSG\\Signer.cs [Dise\u00F1o]",
-              "RelativeToolTip": "Signer.cs [Dise\u00F1o]",
+              "ToolTip": "C:\\Desarrollo\\Escritorio\\SignaBSG\\Signer.cs",
+              "RelativeToolTip": "Signer.cs",
+              "ViewState": "AgIAAHoAAAAAAAAAAAAAAJsAAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-18T04:59:30.845Z",
-              "EditorCaption": " [Dise\u00F1o]"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "Home.cs [Dise\u00F1o]",
-              "DocumentMoniker": "C:\\Desarrollo\\Escritorio\\SignaBSG\\Home.cs",
-              "RelativeDocumentMoniker": "Home.cs",
-              "ToolTip": "C:\\Desarrollo\\Escritorio\\SignaBSG\\Home.cs [Dise\u00F1o]",
-              "RelativeToolTip": "Home.cs [Dise\u00F1o]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-18T04:59:01.944Z",
-              "EditorCaption": " [Dise\u00F1o]"
+              "WhenOpened": "2025-07-24T01:27:54.054Z",
+              "EditorCaption": ""
             }
           ]
         }
