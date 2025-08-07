@@ -128,6 +128,7 @@ namespace SignaBSG
                 );
 
                 clientRect = new Rectangle(location, rectSize);
+
                 isRectPlaced = true;
 
                 pdfViewer1.Invalidate(); // Forzar redibujado
@@ -143,15 +144,15 @@ namespace SignaBSG
 
                 // Calcular ancho y alto en coordenadas PDF
                 float pdfX = topLeftPdf.X;
-                float pdfY = topLeftPdf.Y;
-                float pdfWidth = bottomRightPdf.X - topLeftPdf.X;
-                float pdfHeight = bottomRightPdf.Y - topLeftPdf.Y;
+                float pdfY = topLeftPdf.Y ;
+              
+                float pdfHeight = topLeftPdf.Y - bottomRightPdf.Y ;
 
                 // Ahora puedes usar estos datos para firmar
                 coordinateX = pdfX;
-                coordinateY = pdfY;
-                //coordinateWidth = pdfWidth;
-                //coordinateHeight = pdfHeight;
+                coordinateY = pdfY - pdfHeight;
+                pageNumber = pageIndex + 1;
+             
             }
         }
 
@@ -243,9 +244,5 @@ namespace SignaBSG
 
         #endregion
 
-        private void pdfToolStripPages1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
-        {
-
-        }
     }
 }
