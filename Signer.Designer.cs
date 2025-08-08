@@ -145,7 +145,7 @@ namespace SignaBSG
             pdfToolStripPages1.Size = new Size(220, 27);
             pdfToolStripPages1.TabIndex = 4;
             pdfToolStripPages1.Text = "pdfToolStripPages1";
-            pdfToolStripPages1.ItemClicked += pdfToolStripPages1_ItemClicked;
+         
             // 
             // button1_EstamparFirma
             // 

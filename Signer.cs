@@ -25,10 +25,15 @@ namespace SignaBSG
         private float coordinateY;
 
         private Cursor customCursor;
+        private Image selloImage;
         private Home mainForm;
 
-        private Rectangle clientRect;
+      
+       // private Rectangle clientRect;
         private bool isRectPlaced = false;
+        //Pdf
+        private RectangleF pdfRect;
+
        
 
 
@@ -84,12 +89,15 @@ namespace SignaBSG
             label1_VersionApp.Text = $"SignaBG {version}";
             pdfViewer1.Zoom = 1.0f;
             pdfViewer1.LoadDocument(this.documentPdf);
+           
             ConfigureCustomCursor();
+            ConfigureCustomSello();
         }
 
         #endregion
 
         #region PDF Viewer Configuration
+
 
         private void ConfigureCustomCursor()
         {
@@ -97,10 +105,13 @@ namespace SignaBSG
             {
                 using Stream stream = Assembly
                     .GetExecutingAssembly()
-                    .GetManifestResourceStream("SignaBSG.Resources.Cursors.signatureCursor.cur");
+                    .GetManifestResourceStream("SignaBSG.Resources.Cursors.cursor.cur");
 
                 customCursor = stream != null ? new Cursor(stream) : Cursors.Hand;
                 pdfViewer1.CursorPersonalizado = customCursor;
+
+              
+
                 pdfViewer1.MouseClick += PdfViewer1_MouseClick;
                 pdfViewer1.Paint += PdfViewer1_Paint;
             }
@@ -110,8 +121,27 @@ namespace SignaBSG
             }
         }
 
+       private void ConfigureCustomSello()
+{
+
+           
+
+            using Stream stream = Assembly
+                            .GetExecutingAssembly()
+                            .GetManifestResourceStream("SignaBSG.Resources.Images.sello.png");
+
+            if (stream != null)
+    {
+        selloImage = Image.FromStream(stream);
+    }
+    else
+    {
+        throw new Exception("No se pudo encontrar el recurso de sello.");
+    }
+}
 
 
+    
         private void PdfViewer1_MouseClick(object? sender, MouseEventArgs e)
         {
             DialogResult result = MessageBox.Show("¿Desea estampar la firma aquí?",
@@ -121,53 +151,54 @@ namespace SignaBSG
 
             if (result == DialogResult.Yes)
             {
-                Size rectSize = new Size(100, 50); // tamaño visual en píxeles
-                Point location = new Point(
-                    e.Location.X - rectSize.Width / 2,
-                    e.Location.Y - rectSize.Height / 2
-                );
-
-                clientRect = new Rectangle(location, rectSize);
-
-                isRectPlaced = true;
-
-                pdfViewer1.Invalidate(); // Forzar redibujado
-
+                SizeF pdfSize;
                 pageIndex = pdfViewer1.CurrentIndex;
 
-                // Convertir punto superior izquierdo y tamaño del rectángulo
-                PointF topLeftPdf = pdfViewer1.ClientToPage(pageIndex, clientRect.Location);
-                PointF bottomRightPdf = pdfViewer1.ClientToPage(pageIndex, new Point(
-                    clientRect.Right,
-                    clientRect.Bottom
-                ));
+                // Se convierte  el centro del clic a coordenadas PDF
+                PointF pdfTopLeft = pdfViewer1.ClientToPage(pageIndex,
+                    new Point(e.Location.X - 50, e.Location.Y - 25));
+                PointF pdfBottomRight = pdfViewer1.ClientToPage(pageIndex,
+                    new Point(e.Location.X + 50, e.Location.Y + 25));
 
-                // Calcular ancho y alto en coordenadas PDF
-                float pdfX = topLeftPdf.X;
-                float pdfY = topLeftPdf.Y ;
-              
-                float pdfHeight = topLeftPdf.Y - bottomRightPdf.Y ;
+                // Se crea el  rectángulo en coordenadas PDF
+                pdfRect = new RectangleF(
+                    pdfTopLeft.X,
+                    pdfBottomRight.Y,
+                    pdfBottomRight.X - pdfTopLeft.X,
+                    pdfTopLeft.Y - pdfBottomRight.Y
+                );
 
-                // Ahora puedes usar estos datos para firmar
-                coordinateX = pdfX;
-                coordinateY = pdfY - pdfHeight;
+                coordinateX = pdfRect.X;
+                coordinateY = pdfRect.Y;
                 pageNumber = pageIndex + 1;
-             
+
+                isRectPlaced = true;
+                pdfViewer1.Invalidate();
             }
         }
+       
 
         private void PdfViewer1_Paint(object sender, PaintEventArgs e)
         {
             if (isRectPlaced)
             {
-                using (Pen redPen = new Pen(Color.Red, 2))
-                {
-                    e.Graphics.DrawRectangle(redPen, clientRect);
-                }
+                // Convertir de PDF a cliente para dibujar correctamente
+                Point topLeft = pdfViewer1.PageToClient(pageIndex, new PointF(pdfRect.Left, pdfRect.Top + pdfRect.Height));
+                Point bottomRight = pdfViewer1.PageToClient(pageIndex, new PointF(pdfRect.Right, pdfRect.Top));
+
+                Rectangle clientRectToDraw = Rectangle.FromLTRB(
+                    topLeft.X,
+                    topLeft.Y,
+                    bottomRight.X,
+                    bottomRight.Y
+                );
+
+                
+                    
+                    e.Graphics.DrawImage(this.selloImage, clientRectToDraw);
+                
             }
         }
-
-
 
 
 

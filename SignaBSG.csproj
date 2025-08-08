@@ -15,7 +15,15 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Remove="Resources\Cursors\cursor.cur" />
+    <None Remove="Resources\Cursors\cursor.png" />
+    <None Remove="Resources\Images\sello.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\Cursors\cursor.cur" />
     <EmbeddedResource Include="Resources\Cursors\signatureCursor.cur" />
+    <EmbeddedResource Include="Resources\Images\sello.png" />
   </ItemGroup>
 
   <ItemGroup>
