@@ -31,7 +31,7 @@ namespace SignaBSG
 
         private void InitializeForm()
         {
-            label1_NumDocumentos.BorderStyle = BorderStyle.FixedSingle;
+            label6_SelectedDocuments.BorderStyle = BorderStyle.FixedSingle;
             this.FormBorderStyle = FormBorderStyle.None;
             this.Text = string.Empty;
             this.DoubleBuffered = true;
@@ -39,9 +39,9 @@ namespace SignaBSG
 
         private void Home_Load(object sender, EventArgs e)
         {
-            label1_VersionApp.Text = $"SignaBG {version}";
-            SetupDragAndDrop(groupBox1_BuscarCertificado, ".p12", GroupBoxCertificate_DragDrop);
-            SetupDragAndDrop(groupBox1_BuscarDocumento, ".pdf", GroupBoxDocument_DragDrop);
+            label1_AppVersion.Text = $"SignaBG {version}";
+            SetupDragAndDrop(groupBox1_SearchCertificate, ".p12", GroupBoxCertificate_Drop);
+            SetupDragAndDrop(groupBox3_SearchDocument, ".pdf", GroupBoxDocument_Drop);
         }
 
         private void ApplyTheme()
@@ -83,7 +83,10 @@ namespace SignaBSG
             e.Effect = DragDropEffects.None;
         }
 
-        private void GroupBoxDocument_DragDrop(object sender, DragEventArgs e)
+        private void GroupBoxDocument_Drop(object sender, DragEventArgs e) => HandleDocumentDrop(e);
+        private void GroupBoxCertificate_Drop(object sender, DragEventArgs e) => HandleCertificateDrop(e);
+
+        private void HandleDocumentDrop(DragEventArgs e)
         {
             string[] files = (string[])e.Data.GetData(DataFormats.FileDrop);
             string pdfFile = files.FirstOrDefault(f => Path.GetExtension(f).ToLower() == ".pdf");
@@ -92,16 +95,17 @@ namespace SignaBSG
             {
                 documentCount = files.Length;
                 documentPdf = pdfFile;
-                label1_NumDocumentos.Text = $"{documentCount} DOCUMENTO(S) SELECCIONADO(S)";
-                label1_ArrastrarDocumento.Text = pdfFile;
+                label6_SelectedDocuments.Text = $"{documentCount} DOCUMENTO(S) SELECCIONADO(S)";
+                label4_DragDocument.Text = pdfFile;
             }
             else
             {
-                ShowWarning("Sólo se permite arrastrar archivos .pdf para el documento.");
+                ShowWarning("Solo se permiten archivos .pdf para los documentos.");
             }
         }
 
-        private void GroupBoxCertificate_DragDrop(object sender, DragEventArgs e)
+
+        private void HandleCertificateDrop(DragEventArgs e)
         {
             string[] files = (string[])e.Data.GetData(DataFormats.FileDrop);
             string p12File = files.FirstOrDefault(f => Path.GetExtension(f).ToLower() == ".p12");
@@ -109,39 +113,45 @@ namespace SignaBSG
             if (!string.IsNullOrEmpty(p12File))
             {
                 certificateP12 = p12File;
-                label1_ArrastrarCertificado.Text = p12File;
+                label2_DragCertificateHere.Text = p12File;
             }
             else
             {
-                ShowWarning("Sólo se permite arrastrar archivos .p12 para el certificado.");
+                ShowWarning("Solo se permiten archivos .p12 para el certificado.");
             }
         }
+
 
         #endregion
 
         #region File Dialogs
 
-        private void button1_Buscar_Certificado_Click(object sender, EventArgs e)
+        private void button1_SearchCertificate_Click(object sender, EventArgs e) => SelectCertificateFile();
+        private void button2_SearchDocument_Click(object sender, EventArgs e) => SelectDocumentFiles();
+
+        private void SelectCertificateFile()
         {
-            OpenFileDialog dialog = CreateFileDialog("Seleccionar Certificado", "Archivos P12 (*.p12)|*.p12");
+            OpenFileDialog dialog = CreateFileDialog("Selecciona certificado", "Archivos P12 (*.p12)|*.p12");
             if (dialog.ShowDialog() == DialogResult.OK)
             {
                 certificateP12 = dialog.FileName;
-                label1_ArrastrarCertificado.Text = certificateP12;
+                label2_DragCertificateHere.Text = certificateP12;
             }
         }
 
-        private void button1_Click_Buscar_Documentos(object sender, EventArgs e)
+
+        private void SelectDocumentFiles()
         {
-            OpenFileDialog dialog = CreateFileDialog("Seleccionar Documentos PDF", "Archivos PDF (*.pdf)|*.pdf", true);
+            OpenFileDialog dialog = CreateFileDialog("Selecciona documentos PDF", "Archivos PDF (*.pdf)|*.pdf", true);
             if (dialog.ShowDialog() == DialogResult.OK)
             {
                 documentPdf = dialog.FileName;
                 documentCount = dialog.FileNames.Length;
-                label1_NumDocumentos.Text = $"{documentCount} DOCUMENTO(S) SELECCIONADO(S)";
-                label1_ArrastrarDocumento.Text = documentPdf;
+                label6_SelectedDocuments.Text = $"{documentCount} DOCUMENTO(S) SELECCIONADO(S)";
+                label4_DragDocument.Text = documentPdf;
             }
         }
+
 
         private OpenFileDialog CreateFileDialog(string title, string filter, bool multi = false) =>
             new()
@@ -156,9 +166,11 @@ namespace SignaBSG
 
         #region Signing and Validation
 
-        private void btn_Firmar_Documento(object sender, EventArgs e)
+        private void button3_Sign_Click(object sender, EventArgs e) => SignDocument();
+
+        private void SignDocument()
         {
-            certificatePassword = textBox1_Contrasenia.Text;
+            certificatePassword = textBox1_EnterPassword.Text;
 
             if (!ValidateFields())
                 return;
@@ -171,12 +183,12 @@ namespace SignaBSG
                 return;
             }
 
-            if (!IsFileSizeAllowedByLicense(fileInfo.Length))
+            if (!IsFileSizeAllowed(fileInfo.Length))
             {
-                MessageBox.Show("El tamaño del PDF no está permitido por las restricciones de licencia.\n\n" +
+                MessageBox.Show("El tamaño del PDF no está permitido por las restricciones de la licencia.\n\n" +
                                 "Solo se permiten documentos menores a 1MB, mayores a 10MB,\n" +
-                                "o de tamaño exacto como 2MB, 3MB, 4MB o 5MB.",
-                                "Restricción de Licencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                                "o exactamente de 2MB, 3MB, 4MB o 5MB.",
+                                "Restricción de licencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
@@ -184,7 +196,8 @@ namespace SignaBSG
             signer.ShowDialog();
         }
 
-        private bool IsFileSizeAllowedByLicense(long fileSizeBytes)
+
+        private bool IsFileSizeAllowed(long fileSizeBytes)
         {
             const long minAllowedBytes = 1025 * 1024;
             const long maxAllowedBytes = 10 * 1024 * 1024;
@@ -207,28 +220,27 @@ namespace SignaBSG
                 string.IsNullOrEmpty(certificatePassword) ||
                 string.IsNullOrEmpty(documentPdf))
             {
-                ShowWarning("Por favor llene los campos necesarios: Certificado .p12, Contraseña y Documento.");
+                ShowWarning("Por favor, completa todos los campos requeridos: Certificado .p12, Contraseña y Documento.");
                 return false;
             }
             return true;
         }
 
-        private void button2_Limpiar_Click(object sender, EventArgs e)
-        {
-            ClearControls();
-        }
 
-        public void ClearControls()
+        private void button4_Clear_Click(object sender, EventArgs e) => ClearAllFields();
+
+        public void ClearAllFields()
         {
-            label1_ArrastrarCertificado.Text = "También lo puedes arrastrar aquí";
-            label1_ArrastrarDocumento.Text = "También lo puedes arrastrar aquí";
-            label1_NumDocumentos.Text = "0 DOCUMENTO(S) SELECCIONADO(S)";
-            textBox1_Contrasenia.Clear();
+            label2_DragCertificateHere.Text = "También puedes arrastrarlo aquí";
+            label4_DragDocument.Text = "También puedes arrastrarlo aquí";
+            label6_SelectedDocuments.Text = "0 DOCUMENTO(S) SELECCIONADO(S)";
+            textBox1_EnterPassword.Clear();
 
             certificateP12 = "";
             certificatePassword = "";
             documentPdf = "";
         }
+
 
         #endregion
 
@@ -239,12 +251,16 @@ namespace SignaBSG
             MessageBox.Show(message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
         }
 
-        private void checkBox1_Contrasenia_CheckedChanged(object sender, EventArgs e)
+        private void checkBox1_ShowPassword_CheckedChanged(object sender, EventArgs e) => TogglePasswordVisibility();
+
+        private void TogglePasswordVisibility()
         {
-            textBox1_Contrasenia.UseSystemPasswordChar = !checkBox1_MostrarContrasenia.Checked;
+            textBox1_EnterPassword.UseSystemPasswordChar = !checkBox1_ShowPassword.Checked;
         }
 
-        private void panel1_MouseDown(object sender, MouseEventArgs e)
+        private void panel1_MouseDown(object sender, MouseEventArgs e) => StartWindowDrag();
+
+        private void StartWindowDrag()
         {
             ReleaseCapture();
             SendMessage(this.Handle, WM_NCLBUTTONDOWN, HTCAPTION, 0);
@@ -254,38 +270,37 @@ namespace SignaBSG
 
         #region Menu
 
-        private void salirToolStripMenuItem_Click(object sender, EventArgs e) => this.Close();
+        private void exitToolStripMenuItem_Click(object sender, EventArgs e) => this.Close();
 
-        private void temaOscuroToolStripMenuItem_Click(object sender, EventArgs e)
+        private void darkThemeToolStripMenuItem_Click(object sender, EventArgs e) => ChangeTheme(Theme.Dark);
+        private void lightThemeToolStripMenuItem_Click(object sender, EventArgs e) => ChangeTheme(Theme.Light);
+        private void systemThemeToolStripMenuItem_Click(object sender, EventArgs e) => ChangeTheme(Theme.System);
+
+        private void ChangeTheme(Theme theme)
         {
-            Properties.Settings.Default.CurrentTheme = Theme.Dark.ToString();
+            Properties.Settings.Default.CurrentTheme = theme.ToString();
             Properties.Settings.Default.Save();
-            DarkMode.ApplyStyle(this);
+
+            if (theme == Theme.Dark)
+                DarkMode.ApplyStyle(this);
+            else if (theme == Theme.Light)
+                LightMode.ApplyStyle(this);
+            else
+                ApplyTheme();
         }
 
-        private void temaClaroToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            Properties.Settings.Default.CurrentTheme = Theme.Light.ToString();
-            Properties.Settings.Default.Save();
-            LightMode.ApplyStyle(this);
-        }
+        private void appVersionToolStripMenuItem_Click(object sender, EventArgs e) => ShowAppVersion();
+        private void aboutToolStripMenuItem_Click (object sender, EventArgs e) => ShowInstructions();
 
-        private void temaSistemaToolStripMenuItem_Click(object sender, EventArgs e)
+        private void ShowAppVersion()
         {
-            Properties.Settings.Default.CurrentTheme = Theme.System.ToString();
-            Properties.Settings.Default.Save();
-            ApplyTheme();
-        }
-
-        private void versiónToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            string message = $"📦 Versión de la aplicación: {version}\n\n" +
+            string message = $"📦 Versión de la App: {version}\n\n" +
                              "👨‍💻 Desarrollado por Bastidas Solutions Group";
-
-            MessageBox.Show(message, "Información de la aplicación", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBox.Show(message, "Información de la App", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
-        private void comoUsarLaAppToolStripMenuItem_Click(object sender, EventArgs e)
+
+        private void ShowInstructions()
         {
             string instructions =
                "📘 Cómo usar SignaBG:\n\n" +
@@ -293,10 +308,11 @@ namespace SignaBSG
                "2. Ingresa la contraseña.\n" +
                "3. Selecciona uno o más documentos PDF.\n" +
                "4. Haz clic en 'Firmar'.\n\n" +
-               "💡 Puedes cambiar el tema desde Configuración → Cambiar Tema.";
+               "💡 Puedes cambiar el tema desde Configuración → Cambiar tema.";
 
             MessageBox.Show(instructions, "Cómo usar SignaBG", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
+
 
         #endregion
 
@@ -307,11 +323,14 @@ namespace SignaBSG
         public const int WM_NCLBUTTONDOWN = 0xA1;
         public const int HTCAPTION = 0x2;
 
-        private void button2_Close_Click(object sender, EventArgs e) => this.Close();
-        private void button2_Maximizar_Click(object sender, EventArgs e) =>
-            this.WindowState = this.WindowState == FormWindowState.Normal ? FormWindowState.Maximized : FormWindowState.Normal;
+        private void button7_Close_Click(object sender, EventArgs e) => this.Close();
+        private void button6_Maximize_Click(object sender, EventArgs e) => ToggleWindowState();
+        private void button5_Minimize_Click(object sender, EventArgs e) => this.WindowState = FormWindowState.Minimized;
 
-        private void button2_Click(object sender, EventArgs e) => this.WindowState = FormWindowState.Minimized;
+        private void ToggleWindowState()
+        {
+            this.WindowState = this.WindowState == FormWindowState.Normal ? FormWindowState.Maximized : FormWindowState.Normal;
+        }
 
         #endregion
     }

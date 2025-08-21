@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("SignaBSG")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+a82b03b16281896a1402fd1a8a02cb1febaf9a72")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+614d25f6cc07b3169ef705fbf394473bed189329")]
 [assembly: System.Reflection.AssemblyProductAttribute("SignaBSG")]
 [assembly: System.Reflection.AssemblyTitleAttribute("SignaBSG")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

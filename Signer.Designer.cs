@@ -29,60 +29,60 @@ namespace SignaBSG
         /// </summary>
         private void InitializeComponent()
         {
-            panel1_Ventana = new Panel();
-            pictureBox1_Icon = new PictureBox();
-            label1_VersionApp = new Label();
-            button1_Close = new Button();
+            panel1_Window = new Panel();
+            pictureBox1_AppIcon = new PictureBox();
+            label1_AppVersion = new Label();
+            button2_Close = new Button();
             pdfToolStripZoomEx1 = new Patagames.Pdf.Net.Controls.WinForms.ToolBars.PdfToolStripZoomEx();
             pdfViewer1 = new CustomPdfViewer();
             pdfToolStripPages1 = new Patagames.Pdf.Net.Controls.WinForms.ToolBars.PdfToolStripPages();
-            button1_EstamparFirma = new Button();
-            panel1_Ventana.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1_Icon).BeginInit();
+            button1_StampSignature = new Button();
+            panel1_Window.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1_AppIcon).BeginInit();
             SuspendLayout();
             // 
-            // panel1_Ventana
+            // panel1_Window
             // 
-            panel1_Ventana.AutoSize = true;
-            panel1_Ventana.Controls.Add(pictureBox1_Icon);
-            panel1_Ventana.Controls.Add(label1_VersionApp);
-            panel1_Ventana.Controls.Add(button1_Close);
-            panel1_Ventana.Dock = DockStyle.Top;
-            panel1_Ventana.Location = new Point(0, 0);
-            panel1_Ventana.Name = "panel1_Ventana";
-            panel1_Ventana.Size = new Size(802, 34);
-            panel1_Ventana.TabIndex = 2;
-            panel1_Ventana.MouseDown += panel1_Ventana_MouseDown;
+            panel1_Window.AutoSize = true;
+            panel1_Window.Controls.Add(pictureBox1_AppIcon);
+            panel1_Window.Controls.Add(label1_AppVersion);
+            panel1_Window.Controls.Add(button2_Close);
+            panel1_Window.Dock = DockStyle.Top;
+            panel1_Window.Location = new Point(0, 0);
+            panel1_Window.Name = "panel1_Window";
+            panel1_Window.Size = new Size(802, 34);
+            panel1_Window.TabIndex = 2;
+            panel1_Window.MouseDown += panel1_Window_MouseDown;
             // 
-            // pictureBox1_Icon
+            // pictureBox1_AppIcon
             // 
-            pictureBox1_Icon.Image = Properties.Resources.sgb;
-            pictureBox1_Icon.Location = new Point(4, 8);
-            pictureBox1_Icon.Name = "pictureBox1_Icon";
-            pictureBox1_Icon.Size = new Size(39, 23);
-            pictureBox1_Icon.SizeMode = PictureBoxSizeMode.StretchImage;
-            pictureBox1_Icon.TabIndex = 6;
-            pictureBox1_Icon.TabStop = false;
+            pictureBox1_AppIcon.Image = Properties.Resources.sgb;
+            pictureBox1_AppIcon.Location = new Point(4, 8);
+            pictureBox1_AppIcon.Name = "pictureBox1_AppIcon";
+            pictureBox1_AppIcon.Size = new Size(39, 23);
+            pictureBox1_AppIcon.SizeMode = PictureBoxSizeMode.StretchImage;
+            pictureBox1_AppIcon.TabIndex = 6;
+            pictureBox1_AppIcon.TabStop = false;
             // 
-            // label1_VersionApp
+            // label1_AppVersion
             // 
-            label1_VersionApp.AutoSize = true;
-            label1_VersionApp.Location = new Point(49, 8);
-            label1_VersionApp.Name = "label1_VersionApp";
-            label1_VersionApp.Size = new Size(45, 15);
-            label1_VersionApp.TabIndex = 5;
-            label1_VersionApp.Text = "Version";
-            label1_VersionApp.TextAlign = ContentAlignment.BottomCenter;
+            label1_AppVersion.AutoSize = true;
+            label1_AppVersion.Location = new Point(49, 8);
+            label1_AppVersion.Name = "label1_AppVersion";
+            label1_AppVersion.Size = new Size(45, 15);
+            label1_AppVersion.TabIndex = 5;
+            label1_AppVersion.Text = "Version";
+            label1_AppVersion.TextAlign = ContentAlignment.BottomCenter;
             // 
-            // button1_Close
+            // button2_Close
             // 
-            button1_Close.Location = new Point(765, 0);
-            button1_Close.Name = "button1_Close";
-            button1_Close.Size = new Size(37, 31);
-            button1_Close.TabIndex = 0;
-            button1_Close.Text = "✕";
-            button1_Close.UseVisualStyleBackColor = true;
-            button1_Close.Click += buttonCerrar_Click;
+            button2_Close.Location = new Point(765, 0);
+            button2_Close.Name = "button2_Close";
+            button2_Close.Size = new Size(37, 31);
+            button2_Close.TabIndex = 0;
+            button2_Close.Text = "✕";
+            button2_Close.UseVisualStyleBackColor = true;
+            button2_Close.Click += button2_Close_Click;
             // 
             // pdfToolStripZoomEx1
             // 
@@ -135,6 +135,7 @@ namespace SignaBSG
             pdfViewer1.UseProgressiveRender = true;
             pdfViewer1.ViewMode = Patagames.Pdf.Net.Controls.WinForms.ViewModes.Vertical;
             pdfViewer1.Zoom = 0F;
+          
             // 
             // pdfToolStripPages1
             // 
@@ -145,28 +146,27 @@ namespace SignaBSG
             pdfToolStripPages1.Size = new Size(220, 27);
             pdfToolStripPages1.TabIndex = 4;
             pdfToolStripPages1.Text = "pdfToolStripPages1";
-         
             // 
-            // button1_EstamparFirma
+            // button1_StampSignature
             // 
-            button1_EstamparFirma.Location = new Point(330, 34);
-            button1_EstamparFirma.Name = "button1_EstamparFirma";
-            button1_EstamparFirma.Size = new Size(122, 30);
-            button1_EstamparFirma.TabIndex = 6;
-            button1_EstamparFirma.Text = "Estampar Firma";
-            button1_EstamparFirma.UseVisualStyleBackColor = true;
-            button1_EstamparFirma.Click += button1_Click;
+            button1_StampSignature.Location = new Point(330, 34);
+            button1_StampSignature.Name = "button1_StampSignature";
+            button1_StampSignature.Size = new Size(122, 30);
+            button1_StampSignature.TabIndex = 6;
+            button1_StampSignature.Text = "Estampar Firma";
+            button1_StampSignature.UseVisualStyleBackColor = true;
+            button1_StampSignature.Click += button1_StampSignature_Click;
             // 
             // Signer
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(802, 736);
-            Controls.Add(button1_EstamparFirma);
+            Controls.Add(button1_StampSignature);
             Controls.Add(pdfViewer1);
             Controls.Add(pdfToolStripPages1);
             Controls.Add(pdfToolStripZoomEx1);
-            Controls.Add(panel1_Ventana);
+            Controls.Add(panel1_Window);
             FormBorderStyle = FormBorderStyle.FixedDialog;
             MaximizeBox = false;
             MinimizeBox = false;
@@ -174,21 +174,21 @@ namespace SignaBSG
             StartPosition = FormStartPosition.CenterScreen;
             Text = "SignaBG";
             Load += Signer_Load;
-            panel1_Ventana.ResumeLayout(false);
-            panel1_Ventana.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1_Icon).EndInit();
+            panel1_Window.ResumeLayout(false);
+            panel1_Window.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1_AppIcon).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
 
         #endregion
-        private Panel panel1_Ventana;
-        private PictureBox pictureBox1_Icon;
-        private Label label1_VersionApp;
-        private Button button1_Close;
+        private Panel panel1_Window;
+        private PictureBox pictureBox1_AppIcon;
+        private Label label1_AppVersion;
+        private Button button2_Close;
         private Patagames.Pdf.Net.Controls.WinForms.ToolBars.PdfToolStripZoomEx pdfToolStripZoomEx1;
         private Patagames.Pdf.Net.Controls.WinForms.ToolBars.PdfToolStripPages pdfToolStripPages1;
         private CustomPdfViewer pdfViewer1;
-        private Button button1_EstamparFirma;
+        private Button button1_StampSignature;
     }
 }

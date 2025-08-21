@@ -4,7 +4,6 @@ using SignaBSG.Services;
 using System.Reflection;
 using System.Runtime.InteropServices;
 
-
 namespace SignaBSG
 {
     public partial class Signer : Form
@@ -28,18 +27,8 @@ namespace SignaBSG
         private Image selloImage;
         private Home mainForm;
 
-      
-       // private Rectangle clientRect;
         private bool isRectPlaced = false;
-        //Pdf
         private RectangleF pdfRect;
-
-       
-
-
-
-        [DllImport("user32.dll")] private static extern bool ReleaseCapture();
-        [DllImport("user32.dll")] private static extern int SendMessage(IntPtr hWnd, int msg, int wParam, int lParam);
 
         #endregion
 
@@ -84,20 +73,21 @@ namespace SignaBSG
                 LightMode.ApplyStyle(this);
         }
 
-        private void Signer_Load(object sender, EventArgs e)
+        private void Signer_Load(object sender, EventArgs e) => LoadPdfViewer();
+
+        private void LoadPdfViewer()
         {
-            label1_VersionApp.Text = $"SignaBG {version}";
+            label1_AppVersion.Text = $"SignaBG {version}";
             pdfViewer1.Zoom = 1.0f;
-            pdfViewer1.LoadDocument(this.documentPdf);
-           
+            pdfViewer1.LoadDocument(documentPdf);
+
             ConfigureCustomCursor();
-            ConfigureCustomSello();
+            LoadSelloImage();
         }
 
         #endregion
 
         #region PDF Viewer Configuration
-
 
         private void ConfigureCustomCursor()
         {
@@ -110,8 +100,6 @@ namespace SignaBSG
                 customCursor = stream != null ? new Cursor(stream) : Cursors.Hand;
                 pdfViewer1.CursorPersonalizado = customCursor;
 
-              
-
                 pdfViewer1.MouseClick += PdfViewer1_MouseClick;
                 pdfViewer1.Paint += PdfViewer1_Paint;
             }
@@ -121,92 +109,76 @@ namespace SignaBSG
             }
         }
 
-       private void ConfigureCustomSello()
-{
-
-           
-
+        private void LoadSelloImage()
+        {
             using Stream stream = Assembly
-                            .GetExecutingAssembly()
-                            .GetManifestResourceStream("SignaBSG.Resources.Images.sello.png");
+                .GetExecutingAssembly()
+                .GetManifestResourceStream("SignaBSG.Resources.Images.sello.png");
 
             if (stream != null)
-    {
-        selloImage = Image.FromStream(stream);
-    }
-    else
-    {
-        throw new Exception("No se pudo encontrar el recurso de sello.");
-    }
-}
-
-
-    
-        private void PdfViewer1_MouseClick(object? sender, MouseEventArgs e)
-        {
-            DialogResult result = MessageBox.Show("¿Desea estampar la firma aquí?",
-                "Confirm",
-                MessageBoxButtons.YesNo,
-                MessageBoxIcon.Question);
-
-            if (result == DialogResult.Yes)
-            {
-                SizeF pdfSize;
-                pageIndex = pdfViewer1.CurrentIndex;
-
-                // Se convierte  el centro del clic a coordenadas PDF
-                PointF pdfTopLeft = pdfViewer1.ClientToPage(pageIndex,
-                    new Point(e.Location.X - 50, e.Location.Y - 25));
-                PointF pdfBottomRight = pdfViewer1.ClientToPage(pageIndex,
-                    new Point(e.Location.X + 50, e.Location.Y + 25));
-
-                // Se crea el  rectángulo en coordenadas PDF
-                pdfRect = new RectangleF(
-                    pdfTopLeft.X,
-                    pdfBottomRight.Y,
-                    pdfBottomRight.X - pdfTopLeft.X,
-                    pdfTopLeft.Y - pdfBottomRight.Y
-                );
-
-                coordinateX = pdfRect.X;
-                coordinateY = pdfRect.Y;
-                pageNumber = pageIndex + 1;
-
-                isRectPlaced = true;
-                pdfViewer1.Invalidate();
-            }
-        }
-       
-
-        private void PdfViewer1_Paint(object sender, PaintEventArgs e)
-        {
-            if (isRectPlaced)
-            {
-                // Convertir de PDF a cliente para dibujar correctamente
-                Point topLeft = pdfViewer1.PageToClient(pageIndex, new PointF(pdfRect.Left, pdfRect.Top + pdfRect.Height));
-                Point bottomRight = pdfViewer1.PageToClient(pageIndex, new PointF(pdfRect.Right, pdfRect.Top));
-
-                Rectangle clientRectToDraw = Rectangle.FromLTRB(
-                    topLeft.X,
-                    topLeft.Y,
-                    bottomRight.X,
-                    bottomRight.Y
-                );
-
-                
-                    
-                    e.Graphics.DrawImage(this.selloImage, clientRectToDraw);
-                
-            }
+                selloImage = Image.FromStream(stream);
+            else
+                throw new Exception("No se pudo encontrar el recurso de sello.");
         }
 
+        private void PdfViewer1_MouseClick(object? sender, MouseEventArgs e) => HandlePdfMouseClick(e);
 
+        private void HandlePdfMouseClick(MouseEventArgs e)
+        {
+            if (!ConfirmStampPlacement())
+                return;
+
+            pageIndex = pdfViewer1.CurrentIndex;
+
+            SetPdfRectFromClick(e.Location);
+
+            coordinateX = pdfRect.X;
+            coordinateY = pdfRect.Y;
+            pageNumber = pageIndex + 1;
+
+            isRectPlaced = true;
+            pdfViewer1.Invalidate();
+        }
+
+        private bool ConfirmStampPlacement() =>
+            MessageBox.Show("¿Desea estampar la firma aquí?", "Confirm",
+                            MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes;
+
+        private void SetPdfRectFromClick(Point clickLocation)
+        {
+            PointF pdfTopLeft = pdfViewer1.ClientToPage(pageIndex,
+                new Point(clickLocation.X - 50, clickLocation.Y - 25));
+            PointF pdfBottomRight = pdfViewer1.ClientToPage(pageIndex,
+                new Point(clickLocation.X + 50, clickLocation.Y + 25));
+
+            pdfRect = new RectangleF(
+                pdfTopLeft.X,
+                pdfBottomRight.Y,
+                pdfBottomRight.X - pdfTopLeft.X,
+                pdfTopLeft.Y - pdfBottomRight.Y
+            );
+        }
+
+        private void PdfViewer1_Paint(object sender, PaintEventArgs e) => DrawSello(e.Graphics);
+
+        private void DrawSello(Graphics g)
+        {
+            if (!isRectPlaced) return;
+
+            Point topLeft = pdfViewer1.PageToClient(pageIndex, new PointF(pdfRect.Left, pdfRect.Top + pdfRect.Height));
+            Point bottomRight = pdfViewer1.PageToClient(pageIndex, new PointF(pdfRect.Right, pdfRect.Top));
+
+            Rectangle clientRect = Rectangle.FromLTRB(topLeft.X, topLeft.Y, bottomRight.X, bottomRight.Y);
+            g.DrawImage(selloImage, clientRect);
+        }
 
         #endregion
 
         #region PDF Signing
 
-        private async Task StampSignature()
+        private void button1_StampSignature_Click(object sender, EventArgs e) => _ = StampSignatureAsync();
+
+        private async Task StampSignatureAsync()
         {
             try
             {
@@ -230,8 +202,8 @@ namespace SignaBSG
 
                 ShowMessage($"PDF firmado correctamente en:\n{destinationPath}", "Firma completada", MessageBoxIcon.Information);
 
-                this.mainForm.ClearControls();
-                this.Close();
+                mainForm.ClearAllFields();
+                Close();
             }
             catch (Exception ex)
             {
@@ -245,29 +217,21 @@ namespace SignaBSG
             string fileName = Path.GetFileNameWithoutExtension(documentPdf);
             string extension = Path.GetExtension(documentPdf);
 
-            return Path.Combine(directory, $"{fileName}Signed{extension}");
+            return Path.Combine(directory, $"{fileName}signed{extension}");
         }
 
-        private void ShowMessage(string message, string title, MessageBoxIcon icon)
-        {
+        private void ShowMessage(string message, string title, MessageBoxIcon icon) =>
             MessageBox.Show(message, title, MessageBoxButtons.OK, icon);
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            _ = StampSignature();
-        }
 
         #endregion
 
         #region UI Events
 
-        private void buttonCerrar_Click(object sender, EventArgs e)
-        {
-            Close();
-        }
+        private void button2_Close_Click(object sender, EventArgs e) => Close();
 
-        private void panel1_Ventana_MouseDown(object sender, MouseEventArgs e)
+        private void panel1_Window_MouseDown(object sender, MouseEventArgs e) => DragWindow();
+
+        private void DragWindow()
         {
             ReleaseCapture();
             SendMessage(Handle, WM_NCLBUTTONDOWN, HTCAPTION, 0);
@@ -275,5 +239,12 @@ namespace SignaBSG
 
         #endregion
 
+        #region Window  Behavior
+        [DllImport("user32.dll")] private static extern bool ReleaseCapture();
+        [DllImport("user32.dll")] private static extern int SendMessage(IntPtr hWnd, int msg, int wParam, int lParam);
+
+        #endregion
+
+       
     }
 }
